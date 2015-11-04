@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="941834391a0f46929ac550fa7d1549c8" Name="Diagram1">
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.CTPNsach" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.CTPXsach" Width="1.5" PointX="10.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.CTphieuchiNXB" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.Daily" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.Nhaxuatban" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.PNsach" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.PXsach" Width="1.5" PointX="8" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.PhieuchiNXB" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.Phieuthusach" Width="1.5" PointX="8" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.Sach" Width="1.5" PointX="8" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.TTbansachDL" Width="1.5" PointX="10.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.TheLoai" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_CTPNsach_PNsach" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_CTPNsach_Sach" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_CTPXsach_PXsach" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_CTPXsach_Sach" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_CTphieuchiNXB_PhieuchiNXB" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_TTbansachNXB_Sach" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_PXsach_Daily" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_Phieuthusach_Daily" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_PNsach_Nhaxuatban" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_PhieuchiNXB_Nhaxuatban" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_Sach_Nhaxuatban1" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_TTbansachDL_Phieuthusach" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_Sach_TheLoai" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_TTbansachDL_Sach1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

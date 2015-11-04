@@ -1,0 +1,940 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBQLPhatHanhSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CTPNsach">
+          <Key>
+            <PropertyRef Name="MaPN" />
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="MaPN" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Masach" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Soluong" Type="int" Nullable="false" />
+          <Property Name="Gia" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTPXsach">
+          <Key>
+            <PropertyRef Name="MaPX" />
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="MaPX" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Masach" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Soluong" Type="int" Nullable="false" />
+          <Property Name="Gia" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTphieuchiNXB">
+          <Key>
+            <PropertyRef Name="Maphieuchi" />
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="Maphieuchi" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Masach" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Soluong" Type="int" Nullable="false" />
+          <Property Name="Tienchi" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Daily">
+          <Key>
+            <PropertyRef Name="Madaily" />
+          </Key>
+          <Property Name="Madaily" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tendaily" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="No" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nhaxuatban">
+          <Key>
+            <PropertyRef Name="MaNXB" />
+          </Key>
+          <Property Name="MaNXB" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenNXB" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="No" Type="bigint" Nullable="false" />
+          <Property Name="Sotaikhoan" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PNsach">
+          <Key>
+            <PropertyRef Name="MaPN" />
+          </Key>
+          <Property Name="MaPN" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaNXB" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ngaynhap" Type="datetime" Nullable="false" />
+          <Property Name="Nguoigiao" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tongtien" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PXsach">
+          <Key>
+            <PropertyRef Name="MaPX" />
+          </Key>
+          <Property Name="MaPX" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Madaily" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ngayxuat" Type="datetime" Nullable="false" />
+          <Property Name="Tongtien" Type="bigint" Nullable="false" />
+          <Property Name="Nguoinhan" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PhieuchiNXB">
+          <Key>
+            <PropertyRef Name="Maphieuchi" />
+          </Key>
+          <Property Name="Maphieuchi" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaNXB" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ngay" Type="datetime" Nullable="false" />
+          <Property Name="Tongtien" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Phieuthusach">
+          <Key>
+            <PropertyRef Name="Maphieuthu" />
+          </Key>
+          <Property Name="Maphieuthu" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Madaily" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ngaythu" Type="datetime" Nullable="false" />
+          <Property Name="Tongtien" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sach">
+          <Key>
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="Masach" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaNXB" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaTheLoai" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tensach" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tacgia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GiaBan" Type="bigint" Nullable="false" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TTbansachDL">
+          <Key>
+            <PropertyRef Name="Maphieuthu" />
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="Maphieuthu" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Masach" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Soluong" Type="int" Nullable="false" />
+          <Property Name="Tienthu" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TheLoai">
+          <Key>
+            <PropertyRef Name="MaTheLoai" />
+          </Key>
+          <Property Name="MaTheLoai" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenTheLoai" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CTPNsach_PNsach">
+          <End Role="PNsach" Type="Self.PNsach" Multiplicity="1" />
+          <End Role="CTPNsach" Type="Self.CTPNsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PNsach">
+              <PropertyRef Name="MaPN" />
+            </Principal>
+            <Dependent Role="CTPNsach">
+              <PropertyRef Name="MaPN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTPNsach_Sach">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="CTPNsach" Type="Self.CTPNsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="Masach" />
+            </Principal>
+            <Dependent Role="CTPNsach">
+              <PropertyRef Name="Masach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTPXsach_PXsach">
+          <End Role="PXsach" Type="Self.PXsach" Multiplicity="1" />
+          <End Role="CTPXsach" Type="Self.CTPXsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PXsach">
+              <PropertyRef Name="MaPX" />
+            </Principal>
+            <Dependent Role="CTPXsach">
+              <PropertyRef Name="MaPX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTPXsach_Sach">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="CTPXsach" Type="Self.CTPXsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="Masach" />
+            </Principal>
+            <Dependent Role="CTPXsach">
+              <PropertyRef Name="Masach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTphieuchiNXB_PhieuchiNXB">
+          <End Role="PhieuchiNXB" Type="Self.PhieuchiNXB" Multiplicity="1" />
+          <End Role="CTphieuchiNXB" Type="Self.CTphieuchiNXB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhieuchiNXB">
+              <PropertyRef Name="Maphieuchi" />
+            </Principal>
+            <Dependent Role="CTphieuchiNXB">
+              <PropertyRef Name="Maphieuchi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PNsach_Nhaxuatban">
+          <End Role="Nhaxuatban" Type="Self.Nhaxuatban" Multiplicity="1" />
+          <End Role="PNsach" Type="Self.PNsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhaxuatban">
+              <PropertyRef Name="MaNXB" />
+            </Principal>
+            <Dependent Role="PNsach">
+              <PropertyRef Name="MaNXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PXsach_Daily">
+          <End Role="Daily" Type="Self.Daily" Multiplicity="1" />
+          <End Role="PXsach" Type="Self.PXsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily">
+              <PropertyRef Name="Madaily" />
+            </Principal>
+            <Dependent Role="PXsach">
+              <PropertyRef Name="Madaily" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuchiNXB_Nhaxuatban">
+          <End Role="Nhaxuatban" Type="Self.Nhaxuatban" Multiplicity="1" />
+          <End Role="PhieuchiNXB" Type="Self.PhieuchiNXB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhaxuatban">
+              <PropertyRef Name="MaNXB" />
+            </Principal>
+            <Dependent Role="PhieuchiNXB">
+              <PropertyRef Name="MaNXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Phieuthusach_Daily">
+          <End Role="Daily" Type="Self.Daily" Multiplicity="1" />
+          <End Role="Phieuthusach" Type="Self.Phieuthusach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily">
+              <PropertyRef Name="Madaily" />
+            </Principal>
+            <Dependent Role="Phieuthusach">
+              <PropertyRef Name="Madaily" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sach_Nhaxuatban1">
+          <End Role="Nhaxuatban" Type="Self.Nhaxuatban" Multiplicity="1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhaxuatban">
+              <PropertyRef Name="MaNXB" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="MaNXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sach_TheLoai">
+          <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheLoai">
+              <PropertyRef Name="MaTheLoai" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="MaTheLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TTbansachDL_Phieuthusach">
+          <End Role="Phieuthusach" Type="Self.Phieuthusach" Multiplicity="1" />
+          <End Role="TTbansachDL" Type="Self.TTbansachDL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phieuthusach">
+              <PropertyRef Name="Maphieuthu" />
+            </Principal>
+            <Dependent Role="TTbansachDL">
+              <PropertyRef Name="Maphieuthu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TTbansachDL_Sach1">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="TTbansachDL" Type="Self.TTbansachDL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="Masach" />
+            </Principal>
+            <Dependent Role="TTbansachDL">
+              <PropertyRef Name="Masach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TTbansachNXB_Sach">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="CTphieuchiNXB" Type="Self.CTphieuchiNXB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="Masach" />
+            </Principal>
+            <Dependent Role="CTphieuchiNXB">
+              <PropertyRef Name="Masach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBQLPhatHanhSachModelStoreContainer">
+          <EntitySet Name="CTPNsach" EntityType="Self.CTPNsach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTPXsach" EntityType="Self.CTPXsach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTphieuchiNXB" EntityType="Self.CTphieuchiNXB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Daily" EntityType="Self.Daily" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nhaxuatban" EntityType="Self.Nhaxuatban" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PNsach" EntityType="Self.PNsach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PXsach" EntityType="Self.PXsach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuchiNXB" EntityType="Self.PhieuchiNXB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phieuthusach" EntityType="Self.Phieuthusach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TTbansachDL" EntityType="Self.TTbansachDL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TheLoai" EntityType="Self.TheLoai" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CTPNsach_PNsach" Association="Self.FK_CTPNsach_PNsach">
+            <End Role="PNsach" EntitySet="PNsach" />
+            <End Role="CTPNsach" EntitySet="CTPNsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTPNsach_Sach" Association="Self.FK_CTPNsach_Sach">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="CTPNsach" EntitySet="CTPNsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTPXsach_PXsach" Association="Self.FK_CTPXsach_PXsach">
+            <End Role="PXsach" EntitySet="PXsach" />
+            <End Role="CTPXsach" EntitySet="CTPXsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTPXsach_Sach" Association="Self.FK_CTPXsach_Sach">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="CTPXsach" EntitySet="CTPXsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTphieuchiNXB_PhieuchiNXB" Association="Self.FK_CTphieuchiNXB_PhieuchiNXB">
+            <End Role="PhieuchiNXB" EntitySet="PhieuchiNXB" />
+            <End Role="CTphieuchiNXB" EntitySet="CTphieuchiNXB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PNsach_Nhaxuatban" Association="Self.FK_PNsach_Nhaxuatban">
+            <End Role="Nhaxuatban" EntitySet="Nhaxuatban" />
+            <End Role="PNsach" EntitySet="PNsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PXsach_Daily" Association="Self.FK_PXsach_Daily">
+            <End Role="Daily" EntitySet="Daily" />
+            <End Role="PXsach" EntitySet="PXsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuchiNXB_Nhaxuatban" Association="Self.FK_PhieuchiNXB_Nhaxuatban">
+            <End Role="Nhaxuatban" EntitySet="Nhaxuatban" />
+            <End Role="PhieuchiNXB" EntitySet="PhieuchiNXB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Phieuthusach_Daily" Association="Self.FK_Phieuthusach_Daily">
+            <End Role="Daily" EntitySet="Daily" />
+            <End Role="Phieuthusach" EntitySet="Phieuthusach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sach_Nhaxuatban1" Association="Self.FK_Sach_Nhaxuatban1">
+            <End Role="Nhaxuatban" EntitySet="Nhaxuatban" />
+            <End Role="Sach" EntitySet="Sach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sach_TheLoai" Association="Self.FK_Sach_TheLoai">
+            <End Role="TheLoai" EntitySet="TheLoai" />
+            <End Role="Sach" EntitySet="Sach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TTbansachDL_Phieuthusach" Association="Self.FK_TTbansachDL_Phieuthusach">
+            <End Role="Phieuthusach" EntitySet="Phieuthusach" />
+            <End Role="TTbansachDL" EntitySet="TTbansachDL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TTbansachDL_Sach1" Association="Self.FK_TTbansachDL_Sach1">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="TTbansachDL" EntitySet="TTbansachDL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TTbansachNXB_Sach" Association="Self.FK_TTbansachNXB_Sach">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="CTphieuchiNXB" EntitySet="CTphieuchiNXB" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBQLPhatHanhSachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CTPNsach">
+          <Key>
+            <PropertyRef Name="MaPN" />
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="MaPN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Masach" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soluong" Type="Int32" Nullable="false" />
+          <Property Name="Gia" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="PNsach" Relationship="Self.FK_CTPNsach_PNsach" FromRole="CTPNsach" ToRole="PNsach" />
+          <NavigationProperty Name="Sach" Relationship="Self.FK_CTPNsach_Sach" FromRole="CTPNsach" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="CTPXsach">
+          <Key>
+            <PropertyRef Name="MaPX" />
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="MaPX" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Masach" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soluong" Type="Int32" Nullable="false" />
+          <Property Name="Gia" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="PXsach" Relationship="Self.FK_CTPXsach_PXsach" FromRole="CTPXsach" ToRole="PXsach" />
+          <NavigationProperty Name="Sach" Relationship="Self.FK_CTPXsach_Sach" FromRole="CTPXsach" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="CTphieuchiNXB">
+          <Key>
+            <PropertyRef Name="Maphieuchi" />
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="Maphieuchi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Masach" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soluong" Type="Int32" Nullable="false" />
+          <Property Name="Tienchi" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="PhieuchiNXB" Relationship="Self.FK_CTphieuchiNXB_PhieuchiNXB" FromRole="CTphieuchiNXB" ToRole="PhieuchiNXB" />
+          <NavigationProperty Name="Sach" Relationship="Self.FK_TTbansachNXB_Sach" FromRole="CTphieuchiNXB" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="Daily">
+          <Key>
+            <PropertyRef Name="Madaily" />
+          </Key>
+          <Property Name="Madaily" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tendaily" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="No" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="PXsach" Relationship="Self.FK_PXsach_Daily" FromRole="Daily" ToRole="PXsach" />
+          <NavigationProperty Name="Phieuthusach" Relationship="Self.FK_Phieuthusach_Daily" FromRole="Daily" ToRole="Phieuthusach" />
+        </EntityType>
+        <EntityType Name="Nhaxuatban">
+          <Key>
+            <PropertyRef Name="MaNXB" />
+          </Key>
+          <Property Name="MaNXB" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenNXB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="No" Type="Int64" Nullable="false" />
+          <Property Name="Sotaikhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PNsach" Relationship="Self.FK_PNsach_Nhaxuatban" FromRole="Nhaxuatban" ToRole="PNsach" />
+          <NavigationProperty Name="PhieuchiNXB" Relationship="Self.FK_PhieuchiNXB_Nhaxuatban" FromRole="Nhaxuatban" ToRole="PhieuchiNXB" />
+          <NavigationProperty Name="Sach" Relationship="Self.FK_Sach_Nhaxuatban1" FromRole="Nhaxuatban" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="PNsach">
+          <Key>
+            <PropertyRef Name="MaPN" />
+          </Key>
+          <Property Name="MaPN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaNXB" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ngaynhap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Nguoigiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tongtien" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="CTPNsach" Relationship="Self.FK_CTPNsach_PNsach" FromRole="PNsach" ToRole="CTPNsach" />
+          <NavigationProperty Name="Nhaxuatban" Relationship="Self.FK_PNsach_Nhaxuatban" FromRole="PNsach" ToRole="Nhaxuatban" />
+        </EntityType>
+        <EntityType Name="PXsach">
+          <Key>
+            <PropertyRef Name="MaPX" />
+          </Key>
+          <Property Name="MaPX" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Madaily" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ngayxuat" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tongtien" Type="Int64" Nullable="false" />
+          <Property Name="Nguoinhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CTPXsach" Relationship="Self.FK_CTPXsach_PXsach" FromRole="PXsach" ToRole="CTPXsach" />
+          <NavigationProperty Name="Daily" Relationship="Self.FK_PXsach_Daily" FromRole="PXsach" ToRole="Daily" />
+        </EntityType>
+        <EntityType Name="PhieuchiNXB">
+          <Key>
+            <PropertyRef Name="Maphieuchi" />
+          </Key>
+          <Property Name="Maphieuchi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaNXB" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tongtien" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="CTphieuchiNXB" Relationship="Self.FK_CTphieuchiNXB_PhieuchiNXB" FromRole="PhieuchiNXB" ToRole="CTphieuchiNXB" />
+          <NavigationProperty Name="Nhaxuatban" Relationship="Self.FK_PhieuchiNXB_Nhaxuatban" FromRole="PhieuchiNXB" ToRole="Nhaxuatban" />
+        </EntityType>
+        <EntityType Name="Phieuthusach">
+          <Key>
+            <PropertyRef Name="Maphieuthu" />
+          </Key>
+          <Property Name="Maphieuthu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Madaily" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ngaythu" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tongtien" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Daily" Relationship="Self.FK_Phieuthusach_Daily" FromRole="Phieuthusach" ToRole="Daily" />
+          <NavigationProperty Name="TTbansachDL" Relationship="Self.FK_TTbansachDL_Phieuthusach" FromRole="Phieuthusach" ToRole="TTbansachDL" />
+        </EntityType>
+        <EntityType Name="Sach">
+          <Key>
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="Masach" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaNXB" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaTheLoai" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tensach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tacgia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CTPNsach" Relationship="Self.FK_CTPNsach_Sach" FromRole="Sach" ToRole="CTPNsach" />
+          <NavigationProperty Name="CTPXsach" Relationship="Self.FK_CTPXsach_Sach" FromRole="Sach" ToRole="CTPXsach" />
+          <NavigationProperty Name="CTphieuchiNXB" Relationship="Self.FK_TTbansachNXB_Sach" FromRole="Sach" ToRole="CTphieuchiNXB" />
+          <NavigationProperty Name="Nhaxuatban" Relationship="Self.FK_Sach_Nhaxuatban1" FromRole="Sach" ToRole="Nhaxuatban" />
+          <NavigationProperty Name="TheLoai" Relationship="Self.FK_Sach_TheLoai" FromRole="Sach" ToRole="TheLoai" />
+          <NavigationProperty Name="TTbansachDL" Relationship="Self.FK_TTbansachDL_Sach1" FromRole="Sach" ToRole="TTbansachDL" />
+          <Property Name="GiaBan" Type="Int64" Nullable="false" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TTbansachDL">
+          <Key>
+            <PropertyRef Name="Maphieuthu" />
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="Maphieuthu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Masach" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soluong" Type="Int32" Nullable="false" />
+          <Property Name="Tienthu" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Phieuthusach" Relationship="Self.FK_TTbansachDL_Phieuthusach" FromRole="TTbansachDL" ToRole="Phieuthusach" />
+          <NavigationProperty Name="Sach" Relationship="Self.FK_TTbansachDL_Sach1" FromRole="TTbansachDL" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="TheLoai">
+          <Key>
+            <PropertyRef Name="MaTheLoai" />
+          </Key>
+          <Property Name="MaTheLoai" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenTheLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sach" Relationship="Self.FK_Sach_TheLoai" FromRole="TheLoai" ToRole="Sach" />
+        </EntityType>
+        <Association Name="FK_CTPNsach_PNsach">
+          <End Role="PNsach" Type="Self.PNsach" Multiplicity="1" />
+          <End Role="CTPNsach" Type="Self.CTPNsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PNsach">
+              <PropertyRef Name="MaPN" />
+            </Principal>
+            <Dependent Role="CTPNsach">
+              <PropertyRef Name="MaPN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTPNsach_Sach">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="CTPNsach" Type="Self.CTPNsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="Masach" />
+            </Principal>
+            <Dependent Role="CTPNsach">
+              <PropertyRef Name="Masach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTPXsach_PXsach">
+          <End Role="PXsach" Type="Self.PXsach" Multiplicity="1" />
+          <End Role="CTPXsach" Type="Self.CTPXsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PXsach">
+              <PropertyRef Name="MaPX" />
+            </Principal>
+            <Dependent Role="CTPXsach">
+              <PropertyRef Name="MaPX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTPXsach_Sach">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="CTPXsach" Type="Self.CTPXsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="Masach" />
+            </Principal>
+            <Dependent Role="CTPXsach">
+              <PropertyRef Name="Masach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTphieuchiNXB_PhieuchiNXB">
+          <End Role="PhieuchiNXB" Type="Self.PhieuchiNXB" Multiplicity="1" />
+          <End Role="CTphieuchiNXB" Type="Self.CTphieuchiNXB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhieuchiNXB">
+              <PropertyRef Name="Maphieuchi" />
+            </Principal>
+            <Dependent Role="CTphieuchiNXB">
+              <PropertyRef Name="Maphieuchi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TTbansachNXB_Sach">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="CTphieuchiNXB" Type="Self.CTphieuchiNXB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="Masach" />
+            </Principal>
+            <Dependent Role="CTphieuchiNXB">
+              <PropertyRef Name="Masach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PXsach_Daily">
+          <End Role="Daily" Type="Self.Daily" Multiplicity="1" />
+          <End Role="PXsach" Type="Self.PXsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily">
+              <PropertyRef Name="Madaily" />
+            </Principal>
+            <Dependent Role="PXsach">
+              <PropertyRef Name="Madaily" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Phieuthusach_Daily">
+          <End Role="Daily" Type="Self.Daily" Multiplicity="1" />
+          <End Role="Phieuthusach" Type="Self.Phieuthusach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily">
+              <PropertyRef Name="Madaily" />
+            </Principal>
+            <Dependent Role="Phieuthusach">
+              <PropertyRef Name="Madaily" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PNsach_Nhaxuatban">
+          <End Role="Nhaxuatban" Type="Self.Nhaxuatban" Multiplicity="1" />
+          <End Role="PNsach" Type="Self.PNsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhaxuatban">
+              <PropertyRef Name="MaNXB" />
+            </Principal>
+            <Dependent Role="PNsach">
+              <PropertyRef Name="MaNXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuchiNXB_Nhaxuatban">
+          <End Role="Nhaxuatban" Type="Self.Nhaxuatban" Multiplicity="1" />
+          <End Role="PhieuchiNXB" Type="Self.PhieuchiNXB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhaxuatban">
+              <PropertyRef Name="MaNXB" />
+            </Principal>
+            <Dependent Role="PhieuchiNXB">
+              <PropertyRef Name="MaNXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sach_Nhaxuatban1">
+          <End Role="Nhaxuatban" Type="Self.Nhaxuatban" Multiplicity="1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhaxuatban">
+              <PropertyRef Name="MaNXB" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="MaNXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TTbansachDL_Phieuthusach">
+          <End Role="Phieuthusach" Type="Self.Phieuthusach" Multiplicity="1" />
+          <End Role="TTbansachDL" Type="Self.TTbansachDL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phieuthusach">
+              <PropertyRef Name="Maphieuthu" />
+            </Principal>
+            <Dependent Role="TTbansachDL">
+              <PropertyRef Name="Maphieuthu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sach_TheLoai">
+          <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheLoai">
+              <PropertyRef Name="MaTheLoai" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="MaTheLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TTbansachDL_Sach1">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="TTbansachDL" Type="Self.TTbansachDL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="Masach" />
+            </Principal>
+            <Dependent Role="TTbansachDL">
+              <PropertyRef Name="Masach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBQLPhatHanhSachEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CTPNsach" EntityType="Self.CTPNsach" />
+          <EntitySet Name="CTPXsach" EntityType="Self.CTPXsach" />
+          <EntitySet Name="CTphieuchiNXB" EntityType="Self.CTphieuchiNXB" />
+          <EntitySet Name="Daily" EntityType="Self.Daily" />
+          <EntitySet Name="Nhaxuatban" EntityType="Self.Nhaxuatban" />
+          <EntitySet Name="PNsach" EntityType="Self.PNsach" />
+          <EntitySet Name="PXsach" EntityType="Self.PXsach" />
+          <EntitySet Name="PhieuchiNXB" EntityType="Self.PhieuchiNXB" />
+          <EntitySet Name="Phieuthusach" EntityType="Self.Phieuthusach" />
+          <EntitySet Name="Sach" EntityType="Self.Sach" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TTbansachDL" EntityType="Self.TTbansachDL" />
+          <EntitySet Name="TheLoai" EntityType="Self.TheLoai" />
+          <AssociationSet Name="FK_CTPNsach_PNsach" Association="Self.FK_CTPNsach_PNsach">
+            <End Role="PNsach" EntitySet="PNsach" />
+            <End Role="CTPNsach" EntitySet="CTPNsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTPNsach_Sach" Association="Self.FK_CTPNsach_Sach">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="CTPNsach" EntitySet="CTPNsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTPXsach_PXsach" Association="Self.FK_CTPXsach_PXsach">
+            <End Role="PXsach" EntitySet="PXsach" />
+            <End Role="CTPXsach" EntitySet="CTPXsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTPXsach_Sach" Association="Self.FK_CTPXsach_Sach">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="CTPXsach" EntitySet="CTPXsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTphieuchiNXB_PhieuchiNXB" Association="Self.FK_CTphieuchiNXB_PhieuchiNXB">
+            <End Role="PhieuchiNXB" EntitySet="PhieuchiNXB" />
+            <End Role="CTphieuchiNXB" EntitySet="CTphieuchiNXB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TTbansachNXB_Sach" Association="Self.FK_TTbansachNXB_Sach">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="CTphieuchiNXB" EntitySet="CTphieuchiNXB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PXsach_Daily" Association="Self.FK_PXsach_Daily">
+            <End Role="Daily" EntitySet="Daily" />
+            <End Role="PXsach" EntitySet="PXsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Phieuthusach_Daily" Association="Self.FK_Phieuthusach_Daily">
+            <End Role="Daily" EntitySet="Daily" />
+            <End Role="Phieuthusach" EntitySet="Phieuthusach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PNsach_Nhaxuatban" Association="Self.FK_PNsach_Nhaxuatban">
+            <End Role="Nhaxuatban" EntitySet="Nhaxuatban" />
+            <End Role="PNsach" EntitySet="PNsach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuchiNXB_Nhaxuatban" Association="Self.FK_PhieuchiNXB_Nhaxuatban">
+            <End Role="Nhaxuatban" EntitySet="Nhaxuatban" />
+            <End Role="PhieuchiNXB" EntitySet="PhieuchiNXB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sach_Nhaxuatban1" Association="Self.FK_Sach_Nhaxuatban1">
+            <End Role="Nhaxuatban" EntitySet="Nhaxuatban" />
+            <End Role="Sach" EntitySet="Sach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TTbansachDL_Phieuthusach" Association="Self.FK_TTbansachDL_Phieuthusach">
+            <End Role="Phieuthusach" EntitySet="Phieuthusach" />
+            <End Role="TTbansachDL" EntitySet="TTbansachDL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sach_TheLoai" Association="Self.FK_Sach_TheLoai">
+            <End Role="TheLoai" EntitySet="TheLoai" />
+            <End Role="Sach" EntitySet="Sach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TTbansachDL_Sach1" Association="Self.FK_TTbansachDL_Sach1">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="TTbansachDL" EntitySet="TTbansachDL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBQLPhatHanhSachModelStoreContainer" CdmEntityContainer="DBQLPhatHanhSachEntities">
+          <EntitySetMapping Name="CTPNsach">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.CTPNsach">
+              <MappingFragment StoreEntitySet="CTPNsach">
+                <ScalarProperty Name="MaPN" ColumnName="MaPN" />
+                <ScalarProperty Name="Masach" ColumnName="Masach" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTPXsach">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.CTPXsach">
+              <MappingFragment StoreEntitySet="CTPXsach">
+                <ScalarProperty Name="MaPX" ColumnName="MaPX" />
+                <ScalarProperty Name="Masach" ColumnName="Masach" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTphieuchiNXB">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.CTphieuchiNXB">
+              <MappingFragment StoreEntitySet="CTphieuchiNXB">
+                <ScalarProperty Name="Maphieuchi" ColumnName="Maphieuchi" />
+                <ScalarProperty Name="Masach" ColumnName="Masach" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="Tienchi" ColumnName="Tienchi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Daily">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.Daily">
+              <MappingFragment StoreEntitySet="Daily">
+                <ScalarProperty Name="Madaily" ColumnName="Madaily" />
+                <ScalarProperty Name="Tendaily" ColumnName="Tendaily" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="No" ColumnName="No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nhaxuatban">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.Nhaxuatban">
+              <MappingFragment StoreEntitySet="Nhaxuatban">
+                <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
+                <ScalarProperty Name="TenNXB" ColumnName="TenNXB" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Sotaikhoan" ColumnName="Sotaikhoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PNsach">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.PNsach">
+              <MappingFragment StoreEntitySet="PNsach">
+                <ScalarProperty Name="MaPN" ColumnName="MaPN" />
+                <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
+                <ScalarProperty Name="Ngaynhap" ColumnName="Ngaynhap" />
+                <ScalarProperty Name="Nguoigiao" ColumnName="Nguoigiao" />
+                <ScalarProperty Name="Tongtien" ColumnName="Tongtien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PXsach">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.PXsach">
+              <MappingFragment StoreEntitySet="PXsach">
+                <ScalarProperty Name="MaPX" ColumnName="MaPX" />
+                <ScalarProperty Name="Madaily" ColumnName="Madaily" />
+                <ScalarProperty Name="Ngayxuat" ColumnName="Ngayxuat" />
+                <ScalarProperty Name="Tongtien" ColumnName="Tongtien" />
+                <ScalarProperty Name="Nguoinhan" ColumnName="Nguoinhan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhieuchiNXB">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.PhieuchiNXB">
+              <MappingFragment StoreEntitySet="PhieuchiNXB">
+                <ScalarProperty Name="Maphieuchi" ColumnName="Maphieuchi" />
+                <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="Tongtien" ColumnName="Tongtien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phieuthusach">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.Phieuthusach">
+              <MappingFragment StoreEntitySet="Phieuthusach">
+                <ScalarProperty Name="Maphieuthu" ColumnName="Maphieuthu" />
+                <ScalarProperty Name="Madaily" ColumnName="Madaily" />
+                <ScalarProperty Name="Ngaythu" ColumnName="Ngaythu" />
+                <ScalarProperty Name="Tongtien" ColumnName="Tongtien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sach">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.Sach">
+              <MappingFragment StoreEntitySet="Sach">
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+                <ScalarProperty Name="Masach" ColumnName="Masach" />
+                <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
+                <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+                <ScalarProperty Name="Tensach" ColumnName="Tensach" />
+                <ScalarProperty Name="Tacgia" ColumnName="Tacgia" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TTbansachDL">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.TTbansachDL">
+              <MappingFragment StoreEntitySet="TTbansachDL">
+                <ScalarProperty Name="Maphieuthu" ColumnName="Maphieuthu" />
+                <ScalarProperty Name="Masach" ColumnName="Masach" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="Tienthu" ColumnName="Tienthu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TheLoai">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.TheLoai">
+              <MappingFragment StoreEntitySet="TheLoai">
+                <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+                <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
