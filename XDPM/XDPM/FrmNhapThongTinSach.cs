@@ -16,6 +16,7 @@ namespace XDPM
     {
         Sach sach = new Sach();
         string masach="";
+        SearchSach _Search = new SearchSach();
         public FrmNhapThongTinSach()
         {
             InitializeComponent();
@@ -24,20 +25,7 @@ namespace XDPM
         {
             GVSach.DataSource = DALSach.LayDSSach();           
         }
-        public void DGVDisable()
-        {
-            GVSach.Columns[1].Visible = false;
-            GVSach.Columns[2].Visible = false;
-            GVSach.Columns[4].Visible = false;
-            GVSach.Columns[5].Visible = false;
-            GVSach.Columns[6].Visible = false;
-            GVSach.Columns[7].Visible = false;
-            GVSach.Columns[8].Visible = false;
-            GVSach.Columns[9].Visible = false;
-            GVSach.Columns[10].Visible = false;
-            GVSach.Columns[11].Visible = false;
-            GVSach.Columns[12].Visible = false;
-        }
+        
         public void ReSet()
         {
             txtGia.Text = "";
@@ -47,48 +35,55 @@ namespace XDPM
         }
         public void ganProperties()
         {
-            sach.MaNXB = DALNXB.LayNXBtheoten(cbTenNXB.Text).MaNXB;
-            sach.MaTheLoai = DALTheLoai.LayTheLoaiTheoTen(cbTenTheLoai.Text).MaTheLoai;
+            sach.MaNXB = cbTenNXB.SelectedValue.ToString();
+            sach.MaTheLoai = cbTenTheLoai.SelectedValue.ToString();
             sach.Tacgia = txtTacGia.Text;
             sach.Tensach = txtTensach.Text;
             sach.GiaBan = Convert.ToInt64(txtGia.Text);
         }
         private void FrmNhapThongTinSach_Load(object sender, EventArgs e)
         {
+            GVSach.AutoGenerateColumns = false;
             load();
-            DGVDisable();
-            cbTenNXB.DataSource = DALNXB.layTenNXB();
-            cbTenTheLoai.DataSource = DALTheLoai.layTenTheLoai();
-            cbSNXB.Items.Add("Chọn nhà xuất bản");
-            foreach(var item in DALNXB.layTenNXB())
-            {
-                cbSNXB.Items.Add(item);
-            }
-            cbSTheLoai.Items.Add("Chọn thể loại");
-            foreach(var item in DALTheLoai.layTenTheLoai())
-            {
-                cbSTheLoai.Items.Add(item);
-            }
+            //load combobox để thểm,sửa
+            cbTenNXB.DataSource = DALNXB.loadNXB();
+            cbTenNXB.DisplayMember = "TenNXB";
+            cbTenNXB.ValueMember = "MaNXB";
+            cbTenTheLoai.DataSource = DALTheLoai.DsTheLoai();
+            cbTenTheLoai.DisplayMember = "TenTheLoai";
+            cbTenTheLoai.ValueMember = "MaTheLoai";
+            //load combobox để Tìm
+            cbSNXB.DataSource = DALNXB.loadNXB();
+            cbSNXB.DisplayMember = "TenNXB";
+            cbSNXB.ValueMember = "MaNXB";
+            cbSTheLoai.DataSource = DALTheLoai.DsTheLoai();
+            cbSTheLoai.DisplayMember = "TenTheLoai";
+            cbSTheLoai.ValueMember = "MaTheLoai";       
         }
 
         private void btTim_Click(object sender, EventArgs e)
         {
-            BUSSach busSach = new BUSSach();
-              string maNXB="",maTheloai="";
-              if (DALNXB.LayNXBtheoten(cbSNXB.Text)!=null)
-              {
-                  maNXB = (DALNXB.LayNXBtheoten(cbSNXB.Text)).MaNXB;
-              }
-              if (DALTheLoai.LayTheLoaiTheoTen(cbSTheLoai.Text)!=null)
-              {
-                  maTheloai = DALTheLoai.LayTheLoaiTheoTen(cbSTheLoai.Text).MaTheLoai;
-              }
-            GVSach.DataSource = busSach.timkiemSach(txtSTenSach.Text,maNXB,maTheloai, Convert.ToInt64(txtSgianhaptu.Text), Convert.ToInt64(txtSgianhapden.Text));
+            string maNXB = "", maTheloai = "";
+            if (cbSNXB.Text != "Chọn nhà xuất bản")
+            {
+                maNXB = cbSNXB.SelectedValue.ToString();
+            }
+            if (cbSTheLoai.Text != "Chọn thể loại")
+            {
+                maTheloai = cbSTheLoai.SelectedValue.ToString();
+            }
+            _Search.MaNXB = maNXB;
+            _Search.MaTheLoai = maTheloai;
+            _Search.giatu = Convert.ToInt64(txtSgianhaptu.Text);
+            _Search.giaden = Convert.ToInt64(txtSgianhapden.Text);
+            _Search.Tensach = txtSTenSach.Text;
+            BUSSach busSach = new BUSSach(_Search);
+            GVSach.DataSource = busSach.timkiemSach();
             txtSgianhapden.Text = "0";
             txtSgianhaptu.Text = "0";
             cbSNXB.Text = "Chọn nhà xuất bản";
-            cbSTheLoai.Text="Chọn thể loại";
-            DGVDisable();
+            cbSTheLoai.Text = "Chọn thể loại";
+            txtSTenSach.Text = "";
         }
 
         private void GVSach_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -123,7 +118,6 @@ namespace XDPM
                 {
                     MessageBox.Show("Thêm thành công");
                     load();
-                    DGVDisable();
                     ReSet();
                 }
                 else
@@ -148,8 +142,8 @@ namespace XDPM
                 {
                     MessageBox.Show("Sửa thành công");
                     load();
-                    DGVDisable();
                     ReSet();
+                    masach = "";
                 }
                 else
                 {

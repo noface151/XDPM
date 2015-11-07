@@ -10,55 +10,35 @@ namespace BUS
 {
     public class BUSSach
     {
+        SearchSach Search;
+        public BUSSach(SearchSach Search)
+        {
+            this.Search = Search;
+        }
+        public BUSSach() { }
         public string MaSachTuDong()
         {
             int tongSoluong = DALSach.layTongSLSach()+1;
             string Masach="SA"+tongSoluong.ToString();           
             return Masach;
-        }
-        public string ConvertString(string text)
+        }   
+        public List<SearchSach> timkiemSach()
         {
-            for (int i = 33; i < 48; i++)
+            HotroTimKiemTheoTen convert = new HotroTimKiemTheoTen();
+            string SearchText =convert.ConvertString(Search.Tensach).ToLower();
+            List<SearchSach> ListSearch;
+            if(Search.Tensach!="")
             {
-                text = text.Replace(((char)i).ToString(), "");
-            }
-
-            for (int i = 58; i < 65; i++)
-            {
-                text = text.Replace(((char)i).ToString(), "");
-            }
-
-            for (int i = 91; i < 97; i++)
-            {
-                text = text.Replace(((char)i).ToString(), "");
-            }
-
-            for (int i = 123; i < 127; i++)
-            {
-                text = text.Replace(((char)i).ToString(), "");
-            }
-            Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
-
-            string strFormD = text.Normalize(System.Text.NormalizationForm.FormD);
-
-            return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
-        }
-        public List<Sach> timkiemSach(string Tensach,string MaNXB, string MaTheLoai, long giatu, long giaden)
-        {
-            string SearchText = ConvertString(Tensach).ToLower();
-            List<Sach> ListSearch;
-            if(Tensach!="")
-            {
-                ListSearch = DALSach.LaySachTheoTimKiem(MaNXB, MaTheLoai, giatu, giaden).FindAll(delegate(Sach sach)
+                ListSearch = DALSach.LaySachTheoTimKiem(Search).FindAll(delegate(SearchSach sach)
                 {
-                    if (ConvertString(sach.Tensach).ToLower().Contains(SearchText))
+                    if (convert.ConvertString(sach.Tensach).ToLower().Contains(SearchText))
                         return true;
                     else return false;
                 });
             }
             else
             {
-                ListSearch = DALSach.LaySachTheoTimKiem(MaNXB, MaTheLoai, giatu, giaden);
+                ListSearch = DALSach.LaySachTheoTimKiem(Search);
             }
             return ListSearch;
         }

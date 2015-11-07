@@ -8,6 +8,9 @@ namespace DAL
 {
     public class DALSach
     {
+        public string Tensach;
+        public string Masach;
+        public string MaNXB;
         public static bool AddSach(Sach sach)
         {
             DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
@@ -41,14 +44,6 @@ namespace DAL
                 return true;
             }
         }
-        public static Sach LaySachTheoTen(string tensach)
-        {
-            DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
-            var SachSelected = (from p in model.Sach
-                                where p.Tensach.Trim().Equals(tensach)
-                                select p).FirstOrDefault();
-            return SachSelected;
-        }
         public static Sach LaySachTheoMa(string masach)
         {
             DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
@@ -66,40 +61,46 @@ namespace DAL
         }
         public static List<Sach> LayDSSach()
         {
+            List<Sach> List = new List<Sach>(); 
             DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
-            List<Sach> ListSach;
-            var DSSach = from p in model.Sach
-                         select p;
-            return  ListSach = DSSach.ToList();
+            var sach = from p in model.Sach
+                       select p;
+            return List=sach.ToList(); ;
         }
-        public static List<Sach>LaySachTheoTimKiem(string MaNXB,string MaTheLoai,long giatu,long giaden)
+        public static List<SearchSach>LaySachTheoTimKiem(SearchSach Search)
         {
             DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
-            List<Sach> ListSearch;
+            List<SearchSach> ListSearch=new List<SearchSach>();
             var DSSach = (from p in model.Sach
                           select p);
-            if(MaNXB!="")
+            if(Search.MaNXB!="")
             {
-                DSSach = DSSach.Where(q => q.MaNXB.Trim().Equals(MaNXB));
+                DSSach = DSSach.Where(q => q.MaNXB.Trim().Equals(Search.MaNXB));
             }
-            if(MaTheLoai!="")
+            if(Search.MaTheLoai!="")
             {
-                DSSach = DSSach.Where(q => q.MaTheLoai.Trim().Equals(MaTheLoai));
+                DSSach = DSSach.Where(q => q.MaTheLoai.Trim().Equals(Search.MaTheLoai));
             }
-            if(giatu!=0&&giaden!=0)
+            if (Search.giatu != 0 && Search.giaden != 0)
             {
-                DSSach = DSSach.Where(q => q.GiaBan >= giatu && q.GiaBan <= giaden);
+                DSSach = DSSach.Where(q => q.GiaBan >= Search.giatu && q.GiaBan <= Search.giaden);
             }
-            if(giatu!=0&&giaden==0)
+            if (Search.giatu != 0 && Search.giaden == 0)
             {
-                DSSach = DSSach.Where(q => q.GiaBan >= giatu);
+                DSSach = DSSach.Where(q => q.GiaBan >= Search.giatu);
             }
-            if(giatu==0&&giaden!=0)
+            if (Search.giatu == 0 && Search.giaden != 0)
             {
-                DSSach = DSSach.Where(q => q.GiaBan <= giaden);
+                DSSach = DSSach.Where(q => q.GiaBan <= Search.giaden);
             }
-            ListSearch = DSSach.ToList();
-            return ListSearch;
+           foreach(var row in DSSach)
+           {
+               SearchSach _SearchSach = new SearchSach();
+               _SearchSach.Masach = row.Masach;
+               _SearchSach.Tensach = row.Tensach;
+               ListSearch.Add(_SearchSach);
+           }
+           return ListSearch;
         }
         
     }

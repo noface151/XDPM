@@ -8,21 +8,14 @@ namespace DAL
 {
    public class DALTheLoai
     {
-       public static TheLoai LayTheLoaiTheoTen(string TenTheLoai)
+      public static List<TheLoai> DsTheLoai()
        {
            DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
-           var TheLoaiSelected = (from p in model.TheLoai
-                                  where p.TenTheLoai.Trim().Equals(TenTheLoai)
-                                  select p).FirstOrDefault();
-           return TheLoaiSelected;
-       }
-       public static List<String> layTenTheLoai()
-       {
-           DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
-           List<String> tentheloai;
-           var ten = from p in model.TheLoai
-                     select p.TenTheLoai;
-           return tentheloai = ten.ToList();
+          List<TheLoai> List=new List<TheLoai>();
+          var _theloai = from p in model.TheLoai
+                         select p;
+          List = _theloai.ToList();
+          return List;
        }
        public static TheLoai LayTheLoaiTheoMa(string MaTheLoai)
        {
