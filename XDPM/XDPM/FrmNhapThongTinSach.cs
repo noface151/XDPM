@@ -123,6 +123,7 @@ namespace XDPM
                 else
                 {
                     MessageBox.Show("Thêm thất bại");
+                    ReSet();
                 }
             }
         }
@@ -148,6 +149,7 @@ namespace XDPM
                 else
                 {
                     MessageBox.Show("Sửa thất bại");
+                    ReSet();
                 }
             }
         }
