@@ -40,6 +40,7 @@ namespace XDPM
             sach.Tacgia = txtTacGia.Text;
             sach.Tensach = txtTensach.Text;
             sach.GiaBan = Convert.ToInt64(txtGia.Text);
+            sach.GiaNhap = Convert.ToInt64(txtgianhap.Text);
         }
         private void FrmNhapThongTinSach_Load(object sender, EventArgs e)
         {
@@ -49,6 +50,7 @@ namespace XDPM
             cbTenNXB.DataSource = DALNXB.loadNXB();
             cbTenNXB.DisplayMember = "TenNXB";
             cbTenNXB.ValueMember = "MaNXB";
+            cbSNXB.Items.Add("Chọn nhà xuất bản");
             cbTenTheLoai.DataSource = DALTheLoai.DsTheLoai();
             cbTenTheLoai.DisplayMember = "TenTheLoai";
             cbTenTheLoai.ValueMember = "MaTheLoai";
@@ -58,17 +60,17 @@ namespace XDPM
             cbSNXB.ValueMember = "MaNXB";
             cbSTheLoai.DataSource = DALTheLoai.DsTheLoai();
             cbSTheLoai.DisplayMember = "TenTheLoai";
-            cbSTheLoai.ValueMember = "MaTheLoai";       
+            cbSTheLoai.ValueMember = "MaTheLoai";
         }
 
         private void btTim_Click(object sender, EventArgs e)
         {
             string maNXB = "", maTheloai = "";
-            if (cbSNXB.Text != "Chọn nhà xuất bản")
+            if (checkBox1.Checked==true)
             {
                 maNXB = cbSNXB.SelectedValue.ToString();
             }
-            if (cbSTheLoai.Text != "Chọn thể loại")
+            if (checkBox2.Checked == true)
             {
                 maTheloai = cbSTheLoai.SelectedValue.ToString();
             }
@@ -77,13 +79,15 @@ namespace XDPM
             _Search.giatu = Convert.ToInt64(txtSgianhaptu.Text);
             _Search.giaden = Convert.ToInt64(txtSgianhapden.Text);
             _Search.Tensach = txtSTenSach.Text;
+            _Search.gianhaptu =Convert.ToInt64(txtgianhaptu.Text);
+            _Search.gianhapden = Convert.ToInt64(txtgianhapden.Text);
             BUSSach busSach = new BUSSach(_Search);
             GVSach.DataSource = busSach.timkiemSach();
             txtSgianhapden.Text = "0";
             txtSgianhaptu.Text = "0";
-            cbSNXB.Text = "Chọn nhà xuất bản";
-            cbSTheLoai.Text = "Chọn thể loại";
             txtSTenSach.Text = "";
+            txtgianhaptu.Text = "0";
+            txtgianhapden.Text= "0";
         }
 
         private void GVSach_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -100,6 +104,7 @@ namespace XDPM
             txtSoLuong.Text = Sach.SoLuong.ToString();
             cbTenNXB.Text = DALNXB.LayNXBtheoma(Sach.MaNXB).TenNXB;
             cbTenTheLoai.Text = DALTheLoai.LayTheLoaiTheoMa(Sach.MaTheLoai).TenTheLoai;
+            txtgianhap.Text = Sach.GiaNhap.ToString();
         }
 
         private void BtThem_Click(object sender, EventArgs e)

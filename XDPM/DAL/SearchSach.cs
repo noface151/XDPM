@@ -14,5 +14,7 @@ namespace DAL
         public long giatu { get; set; }
         public long giaden { get; set; }
         public string Tensach { get; set; }
+        public long gianhaptu { get; set; }
+        public long gianhapden { get; set; }
     }
 }

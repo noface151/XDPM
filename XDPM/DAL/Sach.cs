@@ -29,6 +29,7 @@ namespace DAL
         public string Tacgia { get; set; }
         public long GiaBan { get; set; }
         public int SoLuong { get; set; }
+        public long GiaNhap { get; set; }
     
         public virtual ICollection<CTPNsach> CTPNsach { get; set; }
         public virtual ICollection<CTPXsach> CTPXsach { get; set; }

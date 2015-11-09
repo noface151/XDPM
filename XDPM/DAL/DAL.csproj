@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALCTPN.cs" />
     <Compile Include="DALDaiLy.cs" />
     <Compile Include="DALNXB.cs" />
+    <Compile Include="DALPhieuNhap.cs" />
     <Compile Include="DALSach.cs" />
     <Compile Include="CTphieuchiNXB.cs">
       <DependentUpon>Model.tt</DependentUpon>

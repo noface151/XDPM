@@ -40,6 +40,7 @@ namespace DAL
                 SachSelected.Tensach = sach.Tensach;
                 SachSelected.Tacgia = sach.Tacgia;
                 SachSelected.GiaBan = sach.GiaBan;
+                SachSelected.GiaNhap = sach.GiaNhap;
                 model.SaveChanges();
                 return true;
             }
@@ -81,6 +82,7 @@ namespace DAL
             {
                 DSSach = DSSach.Where(q => q.MaTheLoai.Trim().Equals(Search.MaTheLoai));
             }
+            //giá bán
             if (Search.giatu != 0 && Search.giaden != 0)
             {
                 DSSach = DSSach.Where(q => q.GiaBan >= Search.giatu && q.GiaBan <= Search.giaden);
@@ -92,6 +94,19 @@ namespace DAL
             if (Search.giatu == 0 && Search.giaden != 0)
             {
                 DSSach = DSSach.Where(q => q.GiaBan <= Search.giaden);
+            }
+            //giá nhập
+            if (Search.gianhaptu != 0 && Search.gianhapden != 0)
+            {
+                DSSach = DSSach.Where(q => q.GiaNhap >= Search.gianhaptu && q.GiaNhap <= Search.gianhapden);
+            }
+            if (Search.gianhaptu != 0 && Search.gianhapden == 0)
+            {
+                DSSach = DSSach.Where(q => q.GiaNhap >= Search.gianhaptu);
+            }
+            if (Search.gianhaptu == 0 && Search.gianhapden != 0)
+            {
+                DSSach = DSSach.Where(q => q.GiaNhap <= Search.gianhapden);
             }
            foreach(var row in DSSach)
            {

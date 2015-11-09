@@ -65,6 +65,7 @@
           <Property Name="Ngaynhap" Type="datetime" Nullable="false" />
           <Property Name="Nguoigiao" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Tongtien" Type="bigint" Nullable="false" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PXsach">
           <Key>
@@ -74,7 +75,8 @@
           <Property Name="Madaily" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Ngayxuat" Type="datetime" Nullable="false" />
           <Property Name="Tongtien" Type="bigint" Nullable="false" />
-          <Property Name="Nguoinhan" Type="nvarchar(max)" />
+          <Property Name="Nguoinhan" Type="nvarchar" MaxLength="50" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PhieuchiNXB">
           <Key>
@@ -104,6 +106,7 @@
           <Property Name="Tensach" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Tacgia" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="GiaBan" Type="bigint" Nullable="false" />
+          <Property Name="GiaNhap" Type="bigint" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -449,6 +452,7 @@
           <Property Name="Tongtien" Type="Int64" Nullable="false" />
           <NavigationProperty Name="CTPNsach" Relationship="Self.FK_CTPNsach_PNsach" FromRole="PNsach" ToRole="CTPNsach" />
           <NavigationProperty Name="Nhaxuatban" Relationship="Self.FK_PNsach_Nhaxuatban" FromRole="PNsach" ToRole="Nhaxuatban" />
+          <Property Name="TinhTrang" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PXsach">
           <Key>
@@ -458,9 +462,10 @@
           <Property Name="Madaily" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ngayxuat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Tongtien" Type="Int64" Nullable="false" />
-          <Property Name="Nguoinhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nguoinhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CTPXsach" Relationship="Self.FK_CTPXsach_PXsach" FromRole="PXsach" ToRole="CTPXsach" />
           <NavigationProperty Name="Daily" Relationship="Self.FK_PXsach_Daily" FromRole="PXsach" ToRole="Daily" />
+          <Property Name="TinhTrang" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PhieuchiNXB">
           <Key>
@@ -501,6 +506,7 @@
           <NavigationProperty Name="TTbansachDL" Relationship="Self.FK_TTbansachDL_Sach1" FromRole="Sach" ToRole="TTbansachDL" />
           <Property Name="GiaBan" Type="Int64" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <Property Name="GiaNhap" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -833,6 +839,7 @@
           <EntitySetMapping Name="PNsach">
             <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.PNsach">
               <MappingFragment StoreEntitySet="PNsach">
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="MaPN" ColumnName="MaPN" />
                 <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
                 <ScalarProperty Name="Ngaynhap" ColumnName="Ngaynhap" />
@@ -844,6 +851,7 @@
           <EntitySetMapping Name="PXsach">
             <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.PXsach">
               <MappingFragment StoreEntitySet="PXsach">
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="MaPX" ColumnName="MaPX" />
                 <ScalarProperty Name="Madaily" ColumnName="Madaily" />
                 <ScalarProperty Name="Ngayxuat" ColumnName="Ngayxuat" />
@@ -875,6 +883,7 @@
           <EntitySetMapping Name="Sach">
             <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.Sach">
               <MappingFragment StoreEntitySet="Sach">
+                <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
                 <ScalarProperty Name="Masach" ColumnName="Masach" />

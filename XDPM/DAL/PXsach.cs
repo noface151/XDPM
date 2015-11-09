@@ -24,6 +24,7 @@ namespace DAL
         public System.DateTime Ngayxuat { get; set; }
         public long Tongtien { get; set; }
         public string Nguoinhan { get; set; }
+        public string TinhTrang { get; set; }
     
         public virtual ICollection<CTPXsach> CTPXsach { get; set; }
         public virtual Daily Daily { get; set; }
