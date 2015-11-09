@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALDaiLy.cs" />
     <Compile Include="DALNXB.cs" />
     <Compile Include="DALSach.cs" />
     <Compile Include="CTphieuchiNXB.cs">
@@ -95,6 +96,7 @@
     <Compile Include="Sach.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="SearchDaily.cs" />
     <Compile Include="SearchNXB.cs" />
     <Compile Include="SearchSach.cs" />
     <Compile Include="sysdiagrams.cs">

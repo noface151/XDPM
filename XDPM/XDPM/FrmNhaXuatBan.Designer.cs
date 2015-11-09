@@ -189,9 +189,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(12, 146);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 13);
+            this.label7.Size = new System.Drawing.Size(126, 13);
             this.label7.TabIndex = 7;
-            this.label7.Text = "Danh sách Sách";
+            this.label7.Text = "Danh sách Nhà xuất bản";
             // 
             // btTim
             // 
