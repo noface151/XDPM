@@ -84,5 +84,53 @@ namespace DAL
                        select p;
              return List = DSPN.ToList();
         }
+        public static List<SearchPhieuNhap>LayPNtheoTimkiem(SearchPhieuNhap Search)
+        {
+            List<SearchPhieuNhap> ListSearch=new List<SearchPhieuNhap>();
+            DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
+            var DSPN = (from p in model.PNsach
+                        select p);
+            if(Search.MaNXB!="")
+            {
+                DSPN = DSPN.Where(q => q.MaNXB.Trim().Equals(Search.MaNXB));
+            }
+            if(Search.TinhTrang!="")
+            {
+                DSPN = DSPN.Where(q => q.TinhTrang.Trim().Equals(Search.TinhTrang));
+            }
+            if(Search.Ngaynhaptu!=null&&Search.Ngaynhapden!=null)
+            {
+                DateTime newngaynhaptu = Search.Ngaynhaptu.Value.AddDays(-1);
+                if (Search.Ngaynhaptu.ToString() != Search.Ngaynhapden.ToString())
+                    DSPN = DSPN.Where(q => q.Ngaynhap >= Search.Ngaynhaptu && q.Ngaynhap <= Search.Ngaynhapden);
+                else DSPN = DSPN.Where(q => q.Ngaynhap == Search.Ngaynhaptu);
+            }
+            if(Search.tiennhaptu!=0&&Search.tiennhapden!=0)
+            {
+                DSPN = DSPN.Where(q => q.Tongtien >= Search.tiennhaptu && q.Tongtien <= Search.tiennhapden);
+            }
+            if(Search.tiennhaptu!=0&&Search.tiennhapden==0)
+            {
+                DSPN = DSPN.Where(q => q.Tongtien >= Search.tiennhaptu);
+            }
+            if(Search.tiennhaptu==0&&Search.tiennhapden!=0)
+            {
+                DSPN = DSPN.Where(q => q.Tongtien <= Search.tiennhapden);
+            }
+            if(Search.tiennhaptu==Search.tiennhapden)
+            {
+                DSPN = DSPN.Where(q => q.Tongtien == Search.tiennhaptu);
+            }
+            foreach(var row in DSPN)
+            {
+                SearchPhieuNhap _search = new SearchPhieuNhap();
+                _search.Ngaynhap = row.Ngaynhap;
+                _search.TinhTrang = row.TinhTrang;
+                _search.Tongtien = row.Tongtien;
+                _search.MaPN = row.MaPN;
+                ListSearch.Add(_search);
+            }
+            return ListSearch;
+        }
     }
 }

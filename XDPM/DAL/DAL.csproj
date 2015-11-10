@@ -64,6 +64,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DALTheLoai.cs" />
+    <Compile Include="DSCT.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,6 +101,7 @@
     </Compile>
     <Compile Include="SearchDaily.cs" />
     <Compile Include="SearchNXB.cs" />
+    <Compile Include="SearchPhieuNhap.cs" />
     <Compile Include="SearchSach.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>

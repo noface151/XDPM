@@ -19,6 +19,7 @@ namespace XDPM
             InitializeComponent();
         }
         PNsach _pnsach = new PNsach();
+        SearchPhieuNhap _search = new SearchPhieuNhap();
         public void load()
         {
             GVPN.DataSource = DALPhieuNhap.LoadDSPN();
@@ -62,19 +63,24 @@ namespace XDPM
             else
             {
                 BUSNhapsach _busnhapsach = new BUSNhapsach();
-                txtMaPN.Text = _busnhapsach.MaPNtudong();
-                GanProperties();
-                bool result = DALPhieuNhap.ThemPhieuNhap(_pnsach);
-                if (result == true)
-                {
-                    MessageBox.Show("Thêm thành công");
-                    load();
-                    reset();
-                }
+                if (txtMaPN.Text != "")
+                { MessageBox.Show("Không thể thêm"); }
                 else
                 {
-                    MessageBox.Show("Thêm thất bại");
-                    reset();
+                    txtMaPN.Text = _busnhapsach.MaPNtudong();
+                    GanProperties();
+                    bool result = DALPhieuNhap.ThemPhieuNhap(_pnsach);
+                    if (result == true)
+                    {
+                        MessageBox.Show("Thêm thành công");
+                        load();
+                        reset();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thất bại");
+                        reset();
+                    }
                 }
             }
         }
@@ -84,15 +90,44 @@ namespace XDPM
             DialogResult dialog;
             _pnsach.MaPN = txtMaPN.Text;
             GanProperties();
-            BUSNhapsach _busnhapsach = new BUSNhapsach(_pnsach);
-            bool result1 = _busnhapsach.KiemTraSuaPhieuNhap();
-            bool result = _busnhapsach.KiemTraTinhTrang();
-            if (DALPhieuNhap.LayPNtheoma(_pnsach.MaPN).TinhTrang.Trim() != "Đã xong")
+            if (_pnsach.MaPN == "")
+            { MessageBox.Show("Chưa chọn phiếu cần sửa"); }
+            else
             {
-                if (result == true)
+                BUSNhapsach _busnhapsach = new BUSNhapsach(_pnsach);
+                bool result1 = _busnhapsach.KiemTraSuaPhieuNhap();
+                bool result = _busnhapsach.KiemTraTinhTrang();
+                if (DALPhieuNhap.LayPNtheoma(_pnsach.MaPN).TinhTrang.Trim() != "Đã xong")
                 {
-                    dialog = MessageBox.Show("Tình trạng là ĐÃ XONG thì phiếu nhập này sẽ không thể SỬA hoặc XÓA. Có muốn thay đổi?", "Sửa tình trạng", MessageBoxButtons.YesNo);
-                    if (dialog == DialogResult.Yes)
+                    if (result == true)
+                    {
+                        dialog = MessageBox.Show("Tình trạng là ĐÃ XONG thì phiếu nhập này sẽ không thể SỬA hoặc XÓA. Có muốn thay đổi?", "Sửa tình trạng", MessageBoxButtons.YesNo);
+                        if (dialog == DialogResult.Yes)
+                        {
+                            if (result1 == true)
+                            {
+                                bool result2 = DALPhieuNhap.SuaPhieuNhap(_pnsach);
+                                if (result2 == true)
+                                {
+                                    MessageBox.Show("Sửa thành công");
+                                    load();
+                                    reset();
+                                    txtMaPN.Text = "";
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Sửa thất bại");
+                                    reset();
+                                    txtMaPN.Text = "";
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Không thể sửa nhà cung cấp này vì ràng buộc dữ liệu");
+                            }
+                        }
+                    }
+                    else
                     {
                         if (result1 == true)
                         {
@@ -102,11 +137,13 @@ namespace XDPM
                                 MessageBox.Show("Sửa thành công");
                                 load();
                                 reset();
+                                txtMaPN.Text = "";
                             }
                             else
                             {
-                                MessageBox.Show("Thêm thất bại");
+                                MessageBox.Show("Sửa thất bại");
                                 reset();
+                                txtMaPN.Text = "";
                             }
                         }
                         else
@@ -115,10 +152,10 @@ namespace XDPM
                         }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Phiếu này đã xử lý xong, không thể sửa hoặc xóa");
+                else
+                {
+                    MessageBox.Show("Phiếu này đã xử lý xong, không thể sửa hoặc xóa");
+                }
             }
         }
         private void GVPN_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -133,35 +170,105 @@ namespace XDPM
             txtNguoiGiao.Text = PnSach.Nguoigiao;
             txtTongtien.Text = PnSach.Tongtien.ToString();
             cbTinhTrang.Text = PnSach.TinhTrang;
+            CbNXB.Text = DALNXB.LayNXBtheoma(PnSach.MaNXB).TenNXB;
         }
 
         private void BtXoa_Click(object sender, EventArgs e)
         {
             DialogResult dialog;
             _pnsach.MaPN = txtMaPN.Text;
-            if (DALPhieuNhap.LayPNtheoma(_pnsach.MaPN).TinhTrang != "Đã xong")
+            if (_pnsach.MaPN == "")
+            { MessageBox.Show("Chưa chọn phiếu cần xóa"); }
+            else
             {
-                dialog = MessageBox.Show("Xóa Phiếu nhập sẽ xóa toàn bị chi tiết của phiếu. Có muốn xóa?", "Xóa phiếu nhập", MessageBoxButtons.YesNo);
-                if (dialog == DialogResult.Yes)
+                if (DALPhieuNhap.LayPNtheoma(_pnsach.MaPN).TinhTrang != "Đã xong")
                 {
-                    bool result = DALPhieuNhap.XoaPhieuNhap(_pnsach,_pnsach.MaPN);
-                    if (result == true)
+                    dialog = MessageBox.Show("Xóa Phiếu nhập sẽ xóa toàn bị chi tiết của phiếu. Có muốn xóa?", "Xóa phiếu nhập", MessageBoxButtons.YesNo);
+                    if (dialog == DialogResult.Yes)
                     {
-                        MessageBox.Show("Xóa thành công");
-                        load();
-                        reset();
+                        bool result = DALPhieuNhap.XoaPhieuNhap(_pnsach, _pnsach.MaPN);
+                        if (result == true)
+                        {
+                            MessageBox.Show("Xóa thành công");
+                            load();
+                            reset();
+                            txtMaPN.Text = "";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa thất bại");
+                            reset();
+                            txtMaPN.Text = "";
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Xóa thất bại");
-                        reset();
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("Phiếu này có tình trạng là Đã xong, không thể sửa hoặc xóa");
+                }
+            }
+        }
+        private void BtTimKiem_Click(object sender, EventArgs e)
+        {
+            _search.MaNXB = "";
+            _search.TinhTrang = "";
+            if (checkBoxNXB.Checked == true)
+            {
+                _search.MaNXB = CBSNXB.SelectedValue.ToString().Trim();
+            }
+            if (checkBoxtinhtrang.Checked == true)
+            {
+                _search.TinhTrang = CBSTinhtrang.Text.Trim();
+            }
+            if (checkBoxthoigian.Checked == true)
+            {
+                _search.Ngaynhaptu = Convert.ToDateTime(dateTungay.Text);
+                _search.Ngaynhapden = Convert.ToDateTime(dateDenngay.Text);
+                if (_search.Ngaynhaptu > _search.Ngaynhapden)
+                {
+                    MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc");
+                    _search.Ngaynhaptu = null;
+                    _search.Ngaynhapden = null;
                 }
             }
             else
             {
-                MessageBox.Show("Phiếu này có tình trạng là Đã xong, không thể sửa hoặc xóa");
+
             }
+            _search.tiennhaptu = Convert.ToInt64(txtSTiennhaptu.Text);
+            _search.tiennhapden = Convert.ToInt64(txtSTiennhapden.Text);
+            GVPN.DataSource = DALPhieuNhap.LayPNtheoTimkiem(_search);
+            txtSTiennhapden.Text = "0";
+            txtSTiennhaptu.Text = "0";
+            _search.Ngaynhaptu = null;
+            _search.Ngaynhapden = null;
+        }
+
+        private void BtCTPN_Click(object sender, EventArgs e)
+        {
+            if (txtMaPN.Text == "")
+            {
+                MessageBox.Show("Chưa chọn phiếu nhập");
+            }
+            else
+            {
+                if (DALPhieuNhap.LayPNtheoma(txtMaPN.Text).TinhTrang != "Đã xong")
+                {
+                    FrmNhapCTSach nhapCT = new FrmNhapCTSach();
+                    nhapCT.Message = txtMaPN.Text;
+                    nhapCT.MaNXB = CbNXB.SelectedValue.ToString().Trim();
+                    nhapCT.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Phiếu này không thể thêm chi tiết");
+                }
+            }
+        }
+
+        private void BtLamMoi_Click(object sender, EventArgs e)
+        {
+            load();
         }
     }
 }
