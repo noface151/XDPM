@@ -16,13 +16,12 @@ namespace DAL
                                select p).FirstOrDefault();
             return _CTphieuchi;
         }
-        public static List<DSCT> DSsachbanduoctheoNXB(string manxb,DateTime ngaythu)
+        public static List<DSCT> DSsachbanduoctheoNXB(string manxb)
         {
             DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
             List<DSCT> List = new List<DSCT>();
             var _sachbanduoc = (from p in model.Phieuthusach
                                from q in model.TTbansachDL
-                               where p.Ngaythu == ngaythu
                                where q.Maphieuthu.Equals(p.Maphieuthu)&&q.TinhTrang.Trim()!="Đã trả nợ"
                                group q by q.Masach into g
                                select new
@@ -67,8 +66,15 @@ namespace DAL
             var _phieuchi = (from p in model.PhieuchiNXB
                              where p.Maphieuchi.Equals(ctphieuchi.Maphieuchi)
                              select p).FirstOrDefault();
+            var _TTbansach = from p in model.TTbansachDL
+                             where p.Masach.Equals(ctphieuchi.Masach)
+                             select p;
             try
             {
+                foreach(var row in _TTbansach)
+                {
+                    row.TinhTrang = "Đã trả nợ";
+                }
                 _phieuchi.Tongtien = _phieuchi.Tongtien + ctphieuchi.Tienchi;
                 model.SaveChanges();
                 return true;

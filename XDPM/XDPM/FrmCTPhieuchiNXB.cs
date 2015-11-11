@@ -40,7 +40,7 @@ namespace XDPM
             GVCTPhieuchi.AutoGenerateColumns = false;
             GVsachbanduoc.AutoGenerateColumns = false;
             txtmaPhieuchi.Text = _maphieuchi;
-           GVsachbanduoc.DataSource=DALCTPhieuChi.DSsachbanduoctheoNXB(_maNXB, DALPhieuChiNXB.layphieuchitheoma(_maphieuchi).Ngay);
+           GVsachbanduoc.DataSource=DALCTPhieuChi.DSsachbanduoctheoNXB(_maNXB);
            load();
         }
 
