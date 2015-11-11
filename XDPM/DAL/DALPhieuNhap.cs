@@ -40,7 +40,7 @@ namespace DAL
                 return true;
             }
         }
-        public static bool XoaPhieuNhap(PNsach pnsach,string MaPN)
+        public static bool XoaPhieuNhap(PNsach pnsach)
         {
             DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
             var _pnsach = (from p in model.PNsach
@@ -84,9 +84,9 @@ namespace DAL
                        select p;
              return List = DSPN.ToList();
         }
-        public static List<SearchPhieuNhap>LayPNtheoTimkiem(SearchPhieuNhap Search)
+        public static List<SearchPhieuNhapPhieuChi> LayPNtheoTimkiem(SearchPhieuNhapPhieuChi Search)
         {
-            List<SearchPhieuNhap> ListSearch=new List<SearchPhieuNhap>();
+            List<SearchPhieuNhapPhieuChi> ListSearch = new List<SearchPhieuNhapPhieuChi>();
             DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
             var DSPN = (from p in model.PNsach
                         select p);
@@ -123,7 +123,7 @@ namespace DAL
             }
             foreach(var row in DSPN)
             {
-                SearchPhieuNhap _search = new SearchPhieuNhap();
+                SearchPhieuNhapPhieuChi _search = new SearchPhieuNhapPhieuChi();
                 _search.Ngaynhap = row.Ngaynhap;
                 _search.TinhTrang = row.TinhTrang;
                 _search.Tongtien = row.Tongtien;

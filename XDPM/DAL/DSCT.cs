@@ -12,5 +12,6 @@ namespace DAL
         public string Tensach { get; set; }
         public long Gia { get; set; }
         public int soluong { get; set; }
+        public long Tienchi { get; set; }
     }
 }

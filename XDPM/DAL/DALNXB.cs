@@ -25,6 +25,15 @@ namespace DAL
                      select p;
            return List =nxb.ToList();
        }
+       public static List<Nhaxuatban> loadNXBCoNo()
+       {
+           DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
+           List<Nhaxuatban> List = new List<Nhaxuatban>();
+           var nxb = from p in model.Nhaxuatban
+                     where p.No>0
+                     select p;
+           return List = nxb.ToList();
+       }
        public static bool AddNXB(Nhaxuatban nxb)
        {
            DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
@@ -53,6 +62,37 @@ namespace DAL
                _nxb.Diachi = nxb.Diachi;
                _nxb.SDT = nxb.SDT;
                _nxb.Sotaikhoan = _nxb.Sotaikhoan;
+               model.SaveChanges();
+               return true;
+           }
+       }
+       public static bool UpdateNoNXBKhiNhap(Nhaxuatban nxb)
+       {
+           DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
+           var _nxb = (from p in model.Nhaxuatban
+                       where p.MaNXB.Equals(nxb.MaNXB)
+                       select p).FirstOrDefault();
+           if (_nxb == null)
+               return false;
+           else
+           {
+               _nxb.No =_nxb.No+ nxb.No;
+               model.SaveChanges();
+               return true;
+           }
+                    
+       }
+       public static bool UpdateNoNXBKhiTra(Nhaxuatban nxb)
+       {
+           DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
+           var _nxb = (from p in model.Nhaxuatban
+                       where p.MaNXB.Equals(nxb.MaNXB)
+                       select p).FirstOrDefault();
+           if (_nxb == null)
+               return false;
+           else
+           {
+               _nxb.No = _nxb.No - nxb.No;
                model.SaveChanges();
                return true;
            }

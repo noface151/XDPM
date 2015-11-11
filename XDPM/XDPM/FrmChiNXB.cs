@@ -12,117 +12,124 @@ using BUS;
 
 namespace XDPM
 {
-    public partial class FrmNhapSach : Form
+    public partial class FrmChiNXB : Form
     {
-        public FrmNhapSach()
+        public FrmChiNXB()
         {
             InitializeComponent();
         }
-        PNsach _pnsach = new PNsach();
+        PhieuchiNXB _phieuchi = new PhieuchiNXB();
         SearchPhieuNhapPhieuChi _search = new SearchPhieuNhapPhieuChi();
         Nhaxuatban _nxb = new Nhaxuatban();
         public void load()
         {
-            GVPN.DataSource = DALPhieuNhap.LoadDSPN();
+            GVphieuchi.DataSource = DALPhieuChiNXB.DSphieuchi();
         }
         public void GanProperties()
         {
-            _pnsach.MaPN = txtMaPN.Text;
-            _pnsach.MaNXB = CbNXB.SelectedValue.ToString();
-            _pnsach.Ngaynhap = Convert.ToDateTime(dateNgaynhap.Text);
-            _pnsach.Nguoigiao = txtNguoiGiao.Text;
-            _pnsach.TinhTrang = cbTinhTrang.Text;
+            _phieuchi.MaNXB = cbNXB.SelectedValue.ToString();
+            _phieuchi.Ngay = Convert.ToDateTime(dateNgaylap.Text);
+            _phieuchi.TrangThai = cbTrangThai.Text;
         }
         public void reset()
         {
-            txtMaPN.Text = "";
-            txtNguoiGiao.Text = "";
+            txtmaphieuchi.Text = "";
             txtTongtien.Text = "";
         }
-        private void FrmNhapSach_Load(object sender, EventArgs e)
+        private void FrmChiNXB_Load(object sender, EventArgs e)
         {
-            GVPN.AutoGenerateColumns = false;
+            GVphieuchi.AutoGenerateColumns = false;
             load();
-            CbNXB.DataSource = DALNXB.loadNXB();
-            CbNXB.DisplayMember = "TenNXB";
-            CbNXB.ValueMember = "MaNXB";
+            cbNXB.DataSource = DALNXB.loadNXBCoNo();
+            cbNXB.DisplayMember = "TenNXB";
+            cbNXB.ValueMember = "MaNXB";
             CBSNXB.DataSource = DALNXB.loadNXB();
             CBSNXB.DisplayMember = "TenNXB";
             CBSNXB.ValueMember = "MaNXB";
+
         }
 
-        private void BtThem_Click(object sender, EventArgs e)
+        private void BTThem_Click(object sender, EventArgs e)
         {
-            if (txtNguoiGiao.Text == "")
+            if (cbTrangThai.Text != "Đang chờ")
             {
-                MessageBox.Show("Chưa nhập người giao sách");
+                MessageBox.Show("Thêm phiếu chi trạng thái phải là ĐANG CHỜ");
             }
-            else if (cbTinhTrang.Text.Trim() != "Đang xử lý")
+            else if (txtmaphieuchi.Text != "")
             {
-                MessageBox.Show("Thêm phiếu mới thì tình trạng phải là đang xử lý");
+                MessageBox.Show("Không thể thêm");
             }
             else
             {
-                BUSNhapsach _busnhapsach = new BUSNhapsach();
-                if (txtMaPN.Text != "")
-                { MessageBox.Show("Không thể thêm"); }
+                BUSPhieuChiNXB busphieuchi = new BUSPhieuChiNXB();
+                _phieuchi.Maphieuchi = busphieuchi.maphieuchitudong();
+                GanProperties();
+                bool result = DALPhieuChiNXB.ThemPhieuChi(_phieuchi);
+                if (result == true)
+                {
+                    MessageBox.Show("Thêm thành công");
+                    load();
+                    reset();
+                }
                 else
                 {
-                    txtMaPN.Text = _busnhapsach.MaPNtudong();
-                    GanProperties();
-                    bool result = DALPhieuNhap.ThemPhieuNhap(_pnsach);
-                    if (result == true)
-                    {
-                        MessageBox.Show("Thêm thành công");
-                        load();
-                        reset();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm thất bại");
-                        reset();
-                    }
+                    MessageBox.Show("Thêm thất bại");
+                    reset();
                 }
             }
         }
 
-        private void BtSua_Click(object sender, EventArgs e)
+        private void GVphieuchi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex>=0)
+            {
+                DataGridViewRow row = GVphieuchi.Rows[e.RowIndex];
+                txtmaphieuchi.Text = row.Cells[0].Value.ToString();
+            }
+            var phieuchi = DALPhieuChiNXB.layphieuchitheoma(txtmaphieuchi.Text);
+            dateNgaylap.Text = phieuchi.Ngay.ToString();
+            txtTongtien.Text = phieuchi.Tongtien.ToString();
+            cbTrangThai.Text = phieuchi.TrangThai;
+            cbNXB.Text = DALNXB.LayNXBtheoma(phieuchi.MaNXB).TenNXB;
+        }
+
+        private void BTSua_Click(object sender, EventArgs e)
         {
             DialogResult dialog;
-            _pnsach.MaPN = txtMaPN.Text;
+            _phieuchi.Maphieuchi = txtmaphieuchi.Text;
             GanProperties();
-            if (_pnsach.MaPN == "")
+            if (_phieuchi.Maphieuchi == "")
             { MessageBox.Show("Chưa chọn phiếu cần sửa"); }
             else
             {
-                BUSNhapsach _busnhapsach = new BUSNhapsach(_pnsach);
-                bool result1 = _busnhapsach.KiemTraSuaPhieuNhap();
-                bool result = _busnhapsach.KiemTraTinhTrang();
-                if (DALPhieuNhap.LayPNtheoma(_pnsach.MaPN).TinhTrang.Trim() != "Đã xong")
+                BUSPhieuChiNXB _busphieuchi = new BUSPhieuChiNXB(_phieuchi);
+                bool result1 = _busphieuchi.KiemTraSuaPhieuChi();
+                bool result = _busphieuchi.KiemTraTinhTrang();
+                if (DALPhieuChiNXB.layphieuchitheoma(_phieuchi.Maphieuchi).TrangThai.Trim()!= "Đã nhận")
                 {
                     if (result == true)
                     {
-                        dialog = MessageBox.Show("Tình trạng là ĐÃ XONG thì phiếu nhập này sẽ không thể SỬA hoặc XÓA. Có muốn thay đổi?", "Sửa tình trạng", MessageBoxButtons.YesNo);
+                        dialog = MessageBox.Show("Trạng thái là ĐÃ NHẬN thì phiếu chi này sẽ không thể SỬA hoặc XÓA. Có muốn thay đổi?", "Sửa tình trạng", MessageBoxButtons.YesNo);
                         if (dialog == DialogResult.Yes)
                         {
                             if (result1 == true)
                             {
-                                bool result2 = DALPhieuNhap.SuaPhieuNhap(_pnsach);
+                                bool result2 = DALPhieuChiNXB.suaphieuchi(_phieuchi);
                                 if (result2 == true)
                                 {
-                                    _nxb.MaNXB = _pnsach.MaNXB;
-                                    _nxb.No = DALPhieuNhap.LayPNtheoma(_pnsach.MaPN).Tongtien;
-                                    DALNXB.UpdateNoNXBKhiNhap(_nxb);
+                                    _nxb.MaNXB = _phieuchi.MaNXB;
+                                    _nxb.No = DALPhieuChiNXB.layphieuchitheoma(_phieuchi.Maphieuchi).Tongtien;
+                                    DALNXB.UpdateNoNXBKhiTra(_nxb);
                                     MessageBox.Show("Sửa thành công");
                                     load();
                                     reset();
-                                    txtMaPN.Text = "";
+                                    txtmaphieuchi.Text = "";
                                 }
                                 else
                                 {
                                     MessageBox.Show("Sửa thất bại");
                                     reset();
-                                    txtMaPN.Text = "";
+                                    txtmaphieuchi.Text = "";
                                 }
                             }
                             else
@@ -135,19 +142,19 @@ namespace XDPM
                     {
                         if (result1 == true)
                         {
-                            bool result2 = DALPhieuNhap.SuaPhieuNhap(_pnsach);
+                            bool result2 = DALPhieuChiNXB.suaphieuchi(_phieuchi);
                             if (result2 == true)
                             {
                                 MessageBox.Show("Sửa thành công");
                                 load();
                                 reset();
-                                txtMaPN.Text = "";
+                                txtmaphieuchi.Text = "";
                             }
                             else
                             {
                                 MessageBox.Show("Sửa thất bại");
                                 reset();
-                                txtMaPN.Text = "";
+                                txtmaphieuchi.Text = "";
                             }
                         }
                         else
@@ -162,47 +169,33 @@ namespace XDPM
                 }
             }
         }
-        private void GVPN_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = GVPN.Rows[e.RowIndex];
-                txtMaPN.Text = row.Cells[0].Value.ToString();
-            }
-            var PnSach = DALPhieuNhap.LayPNtheoma(txtMaPN.Text.Trim());
-            dateNgaynhap.Text = PnSach.Ngaynhap.ToString();
-            txtNguoiGiao.Text = PnSach.Nguoigiao;
-            txtTongtien.Text = PnSach.Tongtien.ToString();
-            cbTinhTrang.Text = PnSach.TinhTrang;
-            CbNXB.Text = DALNXB.LayNXBtheoma(PnSach.MaNXB).TenNXB;
-        }
 
         private void BtXoa_Click(object sender, EventArgs e)
         {
             DialogResult dialog;
-            _pnsach.MaPN = txtMaPN.Text;
-            if (_pnsach.MaPN == "")
+            _phieuchi.Maphieuchi = txtmaphieuchi.Text;
+            if (_phieuchi.Maphieuchi == "")
             { MessageBox.Show("Chưa chọn phiếu cần xóa"); }
             else
             {
-                if (DALPhieuNhap.LayPNtheoma(_pnsach.MaPN).TinhTrang != "Đã xong")
+                if (DALPhieuChiNXB.layphieuchitheoma(_phieuchi.Maphieuchi).TrangThai != "Đã nhận")
                 {
-                    dialog = MessageBox.Show("Xóa Phiếu nhập sẽ xóa toàn bị chi tiết của phiếu. Có muốn xóa?", "Xóa phiếu nhập", MessageBoxButtons.YesNo);
+                    dialog = MessageBox.Show("Xóa Phiếu chi sẽ xóa toàn bị chi tiết của phiếu. Có muốn xóa?", "Xóa phiếu chi", MessageBoxButtons.YesNo);
                     if (dialog == DialogResult.Yes)
                     {
-                        bool result = DALPhieuNhap.XoaPhieuNhap(_pnsach);
+                        bool result = DALPhieuChiNXB.xoaphieuchi(_phieuchi);
                         if (result == true)
                         {
                             MessageBox.Show("Xóa thành công");
                             load();
                             reset();
-                            txtMaPN.Text = "";
+                            txtmaphieuchi.Text = "";
                         }
                         else
                         {
                             MessageBox.Show("Xóa thất bại");
                             reset();
-                            txtMaPN.Text = "";
+                            txtmaphieuchi.Text = "";
                         }
                     }
                 }
@@ -212,6 +205,7 @@ namespace XDPM
                 }
             }
         }
+
         private void BtTimKiem_Click(object sender, EventArgs e)
         {
             _search.MaNXB = "";
@@ -235,45 +229,43 @@ namespace XDPM
                     _search.Ngaynhapden = null;
                 }
             }
-            _search.tiennhaptu = Convert.ToInt64(txtSTiennhaptu.Text);
-            _search.tiennhapden = Convert.ToInt64(txtSTiennhapden.Text);
-            GVPN.DataSource = DALPhieuNhap.LayPNtheoTimkiem(_search);
-            txtSTiennhapden.Text = "0";
-            txtSTiennhaptu.Text = "0";
+            _search.tiennhaptu = Convert.ToInt64(txtSTienchitu.Text);
+            _search.tiennhapden = Convert.ToInt64(txtSTienchiden.Text);
+            GVphieuchi.DataSource = DALPhieuChiNXB.LayPhieuchitheoTimkiem(_search);
+            txtSTienchitu.Text = "0";
+            txtSTienchiden.Text = "0";
             _search.Ngaynhaptu = null;
             _search.Ngaynhapden = null;
         }
 
-        private void BtCTPN_Click(object sender, EventArgs e)
+        private void BtGhichitiet_Click(object sender, EventArgs e)
         {
-            if (txtMaPN.Text == "")
+            if(txtmaphieuchi.Text=="")
             {
-                MessageBox.Show("Chưa chọn phiếu nhập");
+                MessageBox.Show("Chưa chọn phiếu chi");
+            }
+            else if(DALPhieuChiNXB.layphieuchitheoma(txtmaphieuchi.Text).TrangThai!="Đã nhận")
+            {
+                FrmCTPhieuchiNXB ctphieuchi = new FrmCTPhieuchiNXB();
+                ctphieuchi.MaNXB = cbNXB.SelectedValue.ToString();
+                ctphieuchi.Maphieuchi = txtmaphieuchi.Text;
+                ctphieuchi.ShowDialog();
             }
             else
             {
-                if (DALPhieuNhap.LayPNtheoma(txtMaPN.Text).TinhTrang != "Đã xong")
-                {
-                    FrmNhapCTSach nhapCT = new FrmNhapCTSach();
-                    nhapCT.Message = txtMaPN.Text;
-                    nhapCT.MaNXB = CbNXB.SelectedValue.ToString().Trim();
-                    nhapCT.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Phiếu này không thể thêm chi tiết");
-                }
+                MessageBox.Show("Phiếu chi có trạng thái là ĐÃ NHẬN, không thể ghi thêm chi tiết");
             }
         }
 
-        private void BtLamMoi_Click(object sender, EventArgs e)
+        private void BTlammoi_Click(object sender, EventArgs e)
         {
             load();
         }
 
-        private void BtReset_Click(object sender, EventArgs e)
+        private void BtRefresh_Click(object sender, EventArgs e)
         {
             reset();
         }
+
     }
 }

@@ -23,6 +23,7 @@ namespace DAL
         public string MaNXB { get; set; }
         public System.DateTime Ngay { get; set; }
         public long Tongtien { get; set; }
+        public string TrangThai { get; set; }
     
         public virtual ICollection<CTphieuchiNXB> CTphieuchiNXB { get; set; }
         public virtual Nhaxuatban Nhaxuatban { get; set; }

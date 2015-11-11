@@ -44,6 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmChiNXB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChiNXB.Designer.cs">
+      <DependentUpon>FrmChiNXB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCTPhieuchiNXB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCTPhieuchiNXB.Designer.cs">
+      <DependentUpon>FrmCTPhieuchiNXB.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDaiLy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +88,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmChiNXB.resx">
+      <DependentUpon>FrmChiNXB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCTPhieuchiNXB.resx">
+      <DependentUpon>FrmCTPhieuchiNXB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDaiLy.resx">
       <DependentUpon>FrmDaiLy.cs</DependentUpon>
     </EmbeddedResource>

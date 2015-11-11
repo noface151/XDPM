@@ -42,6 +42,7 @@
     <Compile Include="BUSDaiLy.cs" />
     <Compile Include="BUSNhapsach.cs" />
     <Compile Include="BUSNXB.cs" />
+    <Compile Include="BUSPhieuChiNXB.cs" />
     <Compile Include="BUSSach.cs" />
     <Compile Include="HotroTimKiemTheoTen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

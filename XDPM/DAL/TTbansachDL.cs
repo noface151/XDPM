@@ -18,6 +18,7 @@ namespace DAL
         public string Masach { get; set; }
         public int Soluong { get; set; }
         public long Tienthu { get; set; }
+        public string TinhTrang { get; set; }
     
         public virtual Phieuthusach Phieuthusach { get; set; }
         public virtual Sach Sach { get; set; }

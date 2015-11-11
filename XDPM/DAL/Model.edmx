@@ -86,6 +86,7 @@
           <Property Name="MaNXB" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Ngay" Type="datetime" Nullable="false" />
           <Property Name="Tongtien" Type="bigint" Nullable="false" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Phieuthusach">
           <Key>
@@ -128,6 +129,7 @@
           <Property Name="Masach" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Soluong" Type="int" Nullable="false" />
           <Property Name="Tienthu" Type="bigint" Nullable="false" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TheLoai">
           <Key>
@@ -477,6 +479,7 @@
           <Property Name="Tongtien" Type="Int64" Nullable="false" />
           <NavigationProperty Name="CTphieuchiNXB" Relationship="Self.FK_CTphieuchiNXB_PhieuchiNXB" FromRole="PhieuchiNXB" ToRole="CTphieuchiNXB" />
           <NavigationProperty Name="Nhaxuatban" Relationship="Self.FK_PhieuchiNXB_Nhaxuatban" FromRole="PhieuchiNXB" ToRole="Nhaxuatban" />
+          <Property Name="TrangThai" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Phieuthusach">
           <Key>
@@ -529,6 +532,7 @@
           <Property Name="Tienthu" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Phieuthusach" Relationship="Self.FK_TTbansachDL_Phieuthusach" FromRole="TTbansachDL" ToRole="Phieuthusach" />
           <NavigationProperty Name="Sach" Relationship="Self.FK_TTbansachDL_Sach1" FromRole="TTbansachDL" ToRole="Sach" />
+          <Property Name="TinhTrang" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TheLoai">
           <Key>
@@ -863,6 +867,7 @@
           <EntitySetMapping Name="PhieuchiNXB">
             <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.PhieuchiNXB">
               <MappingFragment StoreEntitySet="PhieuchiNXB">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="Maphieuchi" ColumnName="Maphieuchi" />
                 <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
                 <ScalarProperty Name="Ngay" ColumnName="Ngay" />
@@ -908,6 +913,7 @@
           <EntitySetMapping Name="TTbansachDL">
             <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.TTbansachDL">
               <MappingFragment StoreEntitySet="TTbansachDL">
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="Maphieuthu" ColumnName="Maphieuthu" />
                 <ScalarProperty Name="Masach" ColumnName="Masach" />
                 <ScalarProperty Name="Soluong" ColumnName="Soluong" />

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtLamMoi = new System.Windows.Forms.Button();
             this.BtXoa = new System.Windows.Forms.Button();
             this.BtCTPN = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -65,7 +66,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.CBSTinhtrang = new System.Windows.Forms.ComboBox();
             this.CBSNXB = new System.Windows.Forms.ComboBox();
-            this.BtLamMoi = new System.Windows.Forms.Button();
+            this.BtReset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVPN)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.BtReset);
             this.groupBox1.Controls.Add(this.BtLamMoi);
             this.groupBox1.Controls.Add(this.BtXoa);
             this.groupBox1.Controls.Add(this.BtCTPN);
@@ -93,10 +95,20 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 179);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(792, 379);
+            this.groupBox1.Size = new System.Drawing.Size(792, 400);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phiếu nhập sách";
+            // 
+            // BtLamMoi
+            // 
+            this.BtLamMoi.Location = new System.Drawing.Point(648, 37);
+            this.BtLamMoi.Name = "BtLamMoi";
+            this.BtLamMoi.Size = new System.Drawing.Size(114, 23);
+            this.BtLamMoi.TabIndex = 8;
+            this.BtLamMoi.Text = "Làm mới danh sách";
+            this.BtLamMoi.UseVisualStyleBackColor = true;
+            this.BtLamMoi.Click += new System.EventHandler(this.BtLamMoi_Click);
             // 
             // BtXoa
             // 
@@ -435,15 +447,15 @@
             this.CBSNXB.TabIndex = 1;
             this.CBSNXB.Text = "Chọn nhà xuất bản";
             // 
-            // BtLamMoi
+            // BtReset
             // 
-            this.BtLamMoi.Location = new System.Drawing.Point(648, 37);
-            this.BtLamMoi.Name = "BtLamMoi";
-            this.BtLamMoi.Size = new System.Drawing.Size(114, 23);
-            this.BtLamMoi.TabIndex = 8;
-            this.BtLamMoi.Text = "Làm mới danh sách";
-            this.BtLamMoi.UseVisualStyleBackColor = true;
-            this.BtLamMoi.Click += new System.EventHandler(this.BtLamMoi_Click);
+            this.BtReset.Location = new System.Drawing.Point(327, 371);
+            this.BtReset.Name = "BtReset";
+            this.BtReset.Size = new System.Drawing.Size(75, 23);
+            this.BtReset.TabIndex = 9;
+            this.BtReset.Text = "Refresh";
+            this.BtReset.UseVisualStyleBackColor = true;
+            this.BtReset.Click += new System.EventHandler(this.BtReset_Click);
             // 
             // FrmNhapSach
             // 
@@ -504,5 +516,6 @@
         private System.Windows.Forms.CheckBox checkBoxtinhtrang;
         private System.Windows.Forms.CheckBox checkBoxthoigian;
         private System.Windows.Forms.Button BtLamMoi;
+        private System.Windows.Forms.Button BtReset;
     }
 }
