@@ -98,12 +98,11 @@ namespace DAL
             {
                 DSPN = DSPN.Where(q => q.TinhTrang.Trim().Equals(Search.TinhTrang));
             }
-            if(Search.Ngaynhaptu!=null&&Search.Ngaynhapden!=null)
+            if(Search.Ngaytu!=null&&Search.Ngayden!=null)
             {
-                DateTime newngaynhaptu = Search.Ngaynhaptu.Value.AddDays(-1);
-                if (Search.Ngaynhaptu.ToString() != Search.Ngaynhapden.ToString())
-                    DSPN = DSPN.Where(q => q.Ngaynhap >= Search.Ngaynhaptu && q.Ngaynhap <= Search.Ngaynhapden);
-                else DSPN = DSPN.Where(q => q.Ngaynhap == Search.Ngaynhaptu);
+                if (Search.Ngaytu.ToString() != Search.Ngayden.ToString())
+                    DSPN = DSPN.Where(q => q.Ngaynhap >= Search.Ngaytu && q.Ngaynhap <= Search.Ngayden);
+                else DSPN = DSPN.Where(q => q.Ngaynhap == Search.Ngaytu);
             }
             if(Search.tiennhaptu!=0&&Search.tiennhapden!=0)
             {
@@ -117,7 +116,7 @@ namespace DAL
             {
                 DSPN = DSPN.Where(q => q.Tongtien <= Search.tiennhapden);
             }
-            if(Search.tiennhaptu==Search.tiennhapden)
+            if(Search.tiennhaptu==Search.tiennhapden&&Search.tiennhaptu!=0&&Search.tiennhapden!=0)
             {
                 DSPN = DSPN.Where(q => q.Tongtien == Search.tiennhaptu);
             }

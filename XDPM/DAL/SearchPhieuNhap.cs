@@ -15,17 +15,17 @@ namespace DAL
         public string TrangThai { get; set; }
         private DateTime? ngaynhaptu = null;
 
-        public DateTime? Ngaynhaptu
+        public DateTime? Ngaytu
         {
             get { return ngaynhaptu; }
             set { ngaynhaptu = value; }
         }
-        private DateTime? ngaynhapden = null;
+        private DateTime? ngayden = null;
 
-        public DateTime? Ngaynhapden
+        public DateTime? Ngayden
         {
-            get { return ngaynhapden; }
-            set { ngaynhapden = value; }
+            get { return ngayden; }
+            set { ngayden = value; }
         }
         public DateTime Ngaynhap { get; set; }
         public DateTime Ngay { get; set; }

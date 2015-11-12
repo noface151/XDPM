@@ -220,13 +220,13 @@ namespace XDPM
             }
             if (checkBoxthoigian.Checked == true)
             {
-                _search.Ngaynhaptu = Convert.ToDateTime(dateTungay.Text);
-                _search.Ngaynhapden = Convert.ToDateTime(dateDenngay.Text);
-                if (_search.Ngaynhaptu > _search.Ngaynhapden)
+                _search.Ngaytu = Convert.ToDateTime(dateTungay.Text);
+                _search.Ngayden = Convert.ToDateTime(dateDenngay.Text);
+                if (_search.Ngaytu > _search.Ngayden)
                 {
                     MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc");
-                    _search.Ngaynhaptu = null;
-                    _search.Ngaynhapden = null;
+                    _search.Ngaytu = null;
+                    _search.Ngayden = null;
                 }
             }
             _search.tiennhaptu = Convert.ToInt64(txtSTienchitu.Text);
@@ -234,8 +234,8 @@ namespace XDPM
             GVphieuchi.DataSource = DALPhieuChiNXB.LayPhieuchitheoTimkiem(_search);
             txtSTienchitu.Text = "0";
             txtSTienchiden.Text = "0";
-            _search.Ngaynhaptu = null;
-            _search.Ngaynhapden = null;
+            _search.Ngaytu = null;
+            _search.Ngayden = null;
         }
 
         private void BtGhichitiet_Click(object sender, EventArgs e)

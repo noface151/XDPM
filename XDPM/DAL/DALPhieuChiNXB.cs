@@ -100,11 +100,11 @@ namespace DAL
             {
                 DSPhieuchi = DSPhieuchi.Where(q => q.TrangThai.Trim().Equals(Search.TinhTrang));
             }
-            if (Search.Ngaynhaptu != null && Search.Ngaynhapden != null)
+            if (Search.Ngaytu != null && Search.Ngayden != null)
             {
-                if (Search.Ngaynhaptu.ToString() != Search.Ngaynhapden.ToString())
-                    DSPhieuchi = DSPhieuchi.Where(q => q.Ngay >= Search.Ngaynhaptu && q.Ngay <= Search.Ngaynhapden);
-                else DSPhieuchi = DSPhieuchi.Where(q => q.Ngay == Search.Ngaynhaptu);
+                if (Search.Ngaytu.ToString() != Search.Ngayden.ToString())
+                    DSPhieuchi = DSPhieuchi.Where(q => q.Ngay >= Search.Ngaytu && q.Ngay <= Search.Ngayden);
+                else DSPhieuchi = DSPhieuchi.Where(q => q.Ngay == Search.Ngaytu);
             }
             if (Search.tiennhaptu != 0 && Search.tiennhapden != 0)
             {
@@ -118,7 +118,7 @@ namespace DAL
             {
                 DSPhieuchi = DSPhieuchi.Where(q => q.Tongtien <= Search.tiennhapden);
             }
-            if (Search.tiennhaptu == Search.tiennhapden)
+            if (Search.tiennhaptu == Search.tiennhapden && Search.tiennhaptu != 0 && Search.tiennhapden != 0)
             {
                 DSPhieuchi = DSPhieuchi.Where(q => q.Tongtien == Search.tiennhaptu);
             }
