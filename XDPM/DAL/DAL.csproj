@@ -66,6 +66,8 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DALTheLoai.cs" />
+    <Compile Include="DALThongKeDoanhThu.cs" />
+    <Compile Include="DALThongKeSachBanDuoc.cs" />
     <Compile Include="DALThongKeTonKho.cs" />
     <Compile Include="DSCT.cs" />
     <Compile Include="Model.Context.cs">
@@ -112,6 +114,7 @@
     <Compile Include="TheLoai.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ThongKeSachBanDuoc.cs" />
     <Compile Include="TTbansachDL.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

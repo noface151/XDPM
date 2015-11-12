@@ -16,7 +16,7 @@ namespace XDPM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmThongKeTonKho());
+            Application.Run(new FrmThongKeSachBanDuoc());
         }
     }
 }

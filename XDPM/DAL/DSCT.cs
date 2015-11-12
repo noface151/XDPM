@@ -13,5 +13,6 @@ namespace DAL
         public long Gia { get; set; }
         public int soluong { get; set; }
         public long Tienchi { get; set; }
+        public long Tienthu { get; set; }
     }
 }
