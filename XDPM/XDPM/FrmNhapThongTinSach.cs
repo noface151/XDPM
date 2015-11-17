@@ -74,6 +74,7 @@ namespace XDPM
             {
                 maTheloai = cbSTheLoai.SelectedValue.ToString();
             }
+            _Search.Masach = txtmasach.Text;
             _Search.MaNXB = maNXB;
             _Search.MaTheLoai = maTheloai;
             _Search.giatu = Convert.ToInt64(txtSgianhaptu.Text);
@@ -88,6 +89,7 @@ namespace XDPM
             txtSTenSach.Text = "";
             txtgianhaptu.Text = "0";
             txtgianhapden.Text = "0";
+            txtmasach.Text = "";
         }
 
         private void GVSach_CellClick(object sender, DataGridViewCellEventArgs e)

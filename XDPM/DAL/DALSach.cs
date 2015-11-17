@@ -74,6 +74,10 @@ namespace DAL
             List<SearchSach> ListSearch=new List<SearchSach>();
             var DSSach = (from p in model.Sach
                           select p);
+            if(Search.Masach!="")
+            {
+                DSSach = DSSach.Where(q => q.Masach.Trim().Equals(Search.Masach));
+            }
             if(Search.MaNXB!="")
             {
                 DSSach = DSSach.Where(q => q.MaNXB.Trim().Equals(Search.MaNXB));

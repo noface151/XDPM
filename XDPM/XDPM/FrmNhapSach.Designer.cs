@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtReset = new System.Windows.Forms.Button();
             this.BtLamMoi = new System.Windows.Forms.Button();
             this.BtXoa = new System.Windows.Forms.Button();
             this.BtCTPN = new System.Windows.Forms.Button();
@@ -66,7 +67,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.CBSTinhtrang = new System.Windows.Forms.ComboBox();
             this.CBSNXB = new System.Windows.Forms.ComboBox();
-            this.BtReset = new System.Windows.Forms.Button();
+            this.txtmaphieunhap = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVPN)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -99,6 +101,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phiếu nhập sách";
+            // 
+            // BtReset
+            // 
+            this.BtReset.Location = new System.Drawing.Point(327, 371);
+            this.BtReset.Name = "BtReset";
+            this.BtReset.Size = new System.Drawing.Size(75, 23);
+            this.BtReset.TabIndex = 9;
+            this.BtReset.Text = "Refresh";
+            this.BtReset.UseVisualStyleBackColor = true;
+            this.BtReset.Click += new System.EventHandler(this.BtReset_Click);
             // 
             // BtLamMoi
             // 
@@ -298,6 +310,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.txtmaphieunhap);
+            this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.checkBoxthoigian);
             this.groupBox4.Controls.Add(this.checkBoxtinhtrang);
             this.groupBox4.Controls.Add(this.checkBoxNXB);
@@ -447,15 +461,21 @@
             this.CBSNXB.TabIndex = 1;
             this.CBSNXB.Text = "Chọn nhà xuất bản";
             // 
-            // BtReset
+            // txtmaphieunhap
             // 
-            this.BtReset.Location = new System.Drawing.Point(327, 371);
-            this.BtReset.Name = "BtReset";
-            this.BtReset.Size = new System.Drawing.Size(75, 23);
-            this.BtReset.TabIndex = 9;
-            this.BtReset.Text = "Refresh";
-            this.BtReset.UseVisualStyleBackColor = true;
-            this.BtReset.Click += new System.EventHandler(this.BtReset_Click);
+            this.txtmaphieunhap.Location = new System.Drawing.Point(659, 50);
+            this.txtmaphieunhap.Name = "txtmaphieunhap";
+            this.txtmaphieunhap.Size = new System.Drawing.Size(127, 20);
+            this.txtmaphieunhap.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(656, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Mã phiếu nhập";
             // 
             // FrmNhapSach
             // 
@@ -517,5 +537,7 @@
         private System.Windows.Forms.CheckBox checkBoxthoigian;
         private System.Windows.Forms.Button BtLamMoi;
         private System.Windows.Forms.Button BtReset;
+        private System.Windows.Forms.TextBox txtmaphieunhap;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -16,7 +16,7 @@ namespace XDPM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmChiNXB());
+            Application.Run(new FrmDaiLy());
         }
     }
 }

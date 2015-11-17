@@ -229,11 +229,13 @@ namespace XDPM
                     _search.Ngayden = null;
                 }
             }
+            _search.Maphieuchi = txtSMaphieuchi.Text;
             _search.tiennhaptu = Convert.ToInt64(txtSTienchitu.Text);
             _search.tiennhapden = Convert.ToInt64(txtSTienchiden.Text);
             GVphieuchi.DataSource = DALPhieuChiNXB.LayPhieuchitheoTimkiem(_search);
             txtSTienchitu.Text = "0";
             txtSTienchiden.Text = "0";
+            txtSMaphieuchi.Text = "";
             _search.Ngaytu = null;
             _search.Ngayden = null;
         }

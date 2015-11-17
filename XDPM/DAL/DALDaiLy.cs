@@ -68,6 +68,10 @@ namespace DAL
             List<SearchDaily> ListSearch = new List<SearchDaily>();
             var _daily = (from p in model.Daily
                         select p);
+            if(serach.Madaily!="")
+            {
+                _daily = _daily.Where(q => q.Madaily.Trim().Equals(serach.Madaily));
+            }
             if (serach.notu != 0 && serach.noden != 0)
             {
                 _daily = _daily.Where(q => q.No >= serach.notu && q.No <= serach.noden);

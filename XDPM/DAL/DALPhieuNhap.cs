@@ -90,6 +90,10 @@ namespace DAL
             DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
             var DSPN = (from p in model.PNsach
                         select p);
+            if(Search.MaPN!="")
+            {
+                DSPN = DSPN.Where(q => q.MaPN.Trim().Equals(Search.MaPN));
+            }
             if(Search.MaNXB!="")
             {
                 DSPN = DSPN.Where(q => q.MaNXB.Trim().Equals(Search.MaNXB));

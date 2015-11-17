@@ -55,6 +55,8 @@
             this.MaNXB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tensach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtmadaily = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVDaily)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -115,7 +117,7 @@
             // 
             this.txtSTenDaily.Location = new System.Drawing.Point(6, 87);
             this.txtSTenDaily.Name = "txtSTenDaily";
-            this.txtSTenDaily.Size = new System.Drawing.Size(393, 20);
+            this.txtSTenDaily.Size = new System.Drawing.Size(301, 20);
             this.txtSTenDaily.TabIndex = 1;
             // 
             // label1
@@ -292,6 +294,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtmadaily);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtSDuong);
@@ -309,6 +313,22 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm";
+            // 
+            // txtmadaily
+            // 
+            this.txtmadaily.Location = new System.Drawing.Point(354, 87);
+            this.txtmadaily.Name = "txtmadaily";
+            this.txtmadaily.Size = new System.Drawing.Size(102, 20);
+            this.txtmadaily.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(354, 71);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Mã đại lý";
             // 
             // FrmDaiLy
             // 
@@ -361,5 +381,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNXB;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tensach;
+        private System.Windows.Forms.TextBox txtmadaily;
+        private System.Windows.Forms.Label label6;
     }
 }

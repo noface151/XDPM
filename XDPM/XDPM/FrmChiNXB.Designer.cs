@@ -65,6 +65,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.CBSTinhtrang = new System.Windows.Forms.ComboBox();
             this.CBSNXB = new System.Windows.Forms.ComboBox();
+            this.txtSMaphieuchi = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVphieuchi)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -289,6 +291,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.txtSMaphieuchi);
+            this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.checkBoxthoigian);
             this.groupBox4.Controls.Add(this.checkBoxtinhtrang);
             this.groupBox4.Controls.Add(this.checkBoxNXB);
@@ -438,6 +442,22 @@
             this.CBSNXB.TabIndex = 1;
             this.CBSNXB.Text = "Chọn nhà xuất bản";
             // 
+            // txtSMaphieuchi
+            // 
+            this.txtSMaphieuchi.Location = new System.Drawing.Point(659, 50);
+            this.txtSMaphieuchi.Name = "txtSMaphieuchi";
+            this.txtSMaphieuchi.Size = new System.Drawing.Size(127, 20);
+            this.txtSMaphieuchi.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(656, 34);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Mã phiếu chi";
+            // 
             // FrmChiNXB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,6 +516,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
         private System.Windows.Forms.Button BTlammoi;
         private System.Windows.Forms.Button BtRefresh;
+        private System.Windows.Forms.TextBox txtSMaphieuchi;
+        private System.Windows.Forms.Label label6;
 
     }
 }

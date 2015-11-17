@@ -112,6 +112,7 @@ namespace XDPM
 
         private void btTim_Click(object sender, EventArgs e)
         {
+            _Search.Madaily = txtmadaily.Text;
             _Search.Tendaily = txtSTenDaily.Text.Trim();
             _Search.Duong = txtSDuong.Text.Trim();
             _Search.Quan = txtSQuan.Text.Trim();
@@ -124,6 +125,7 @@ namespace XDPM
             txtSNotu.Text = "0";
             txtSQuan.Text = "";
             txtSTenDaily.Text = "";
+            txtmadaily.Text = "";
         }
     }
 }

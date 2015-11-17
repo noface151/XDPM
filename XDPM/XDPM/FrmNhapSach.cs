@@ -235,11 +235,13 @@ namespace XDPM
                     _search.Ngayden = null;
                 }
             }
+            _search.MaPN = txtmaphieunhap.Text;
             _search.tiennhaptu = Convert.ToInt64(txtSTiennhaptu.Text);
             _search.tiennhapden = Convert.ToInt64(txtSTiennhapden.Text);
             GVPN.DataSource = DALPhieuNhap.LayPNtheoTimkiem(_search);
             txtSTiennhapden.Text = "0";
             txtSTiennhaptu.Text = "0";
+            txtmaphieunhap.Text = "";
             _search.Ngaytu = null;
             _search.Ngayden = null;
             checkBoxNXB.Checked = false;

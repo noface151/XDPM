@@ -92,6 +92,10 @@ namespace DAL
             DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
             var DSPhieuchi = (from p in model.PhieuchiNXB
                         select p);
+            if(Search.Maphieuchi!="")
+            {
+                DSPhieuchi = DSPhieuchi.Where(q => q.Maphieuchi.Trim().Equals(Search.Maphieuchi));
+            }
             if (Search.MaNXB != "")
             {
                 DSPhieuchi = DSPhieuchi.Where(q => q.MaNXB.Trim().Equals(Search.MaNXB));
