@@ -244,17 +244,13 @@ namespace XDPM
             {
                 MessageBox.Show("Chưa chọn phiếu chi");
             }
-            else if(DALPhieuChiNXB.layphieuchitheoma(txtmaphieuchi.Text).TrangThai!="Đã nhận")
+            else 
             {
                 FrmCTPhieuchiNXB ctphieuchi = new FrmCTPhieuchiNXB();
                 ctphieuchi.MaNXB = cbNXB.SelectedValue.ToString();
                 ctphieuchi.Maphieuchi = txtmaphieuchi.Text;
                 ctphieuchi.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Phiếu chi có trạng thái là ĐÃ NHẬN, không thể ghi thêm chi tiết");
-            }
+            }          
         }
 
         private void BTlammoi_Click(object sender, EventArgs e)

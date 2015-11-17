@@ -15,7 +15,7 @@ namespace XDPM
     public partial class FrmNhapThongTinSach : Form
     {
         Sach sach = new Sach();
-        string masach="";
+        string masach = "";
         SearchSach _Search = new SearchSach();
         public FrmNhapThongTinSach()
         {
@@ -23,9 +23,9 @@ namespace XDPM
         }
         public void load()
         {
-            GVSach.DataSource = DALSach.LayDSSach();           
+            GVSach.DataSource = DALSach.LayDSSach();
         }
-        
+
         public void ReSet()
         {
             txtGia.Text = "";
@@ -66,7 +66,7 @@ namespace XDPM
         private void btTim_Click(object sender, EventArgs e)
         {
             string maNXB = "", maTheloai = "";
-            if (checkBox1.Checked==true)
+            if (checkBox1.Checked == true)
             {
                 maNXB = cbSNXB.SelectedValue.ToString();
             }
@@ -79,7 +79,7 @@ namespace XDPM
             _Search.giatu = Convert.ToInt64(txtSgianhaptu.Text);
             _Search.giaden = Convert.ToInt64(txtSgianhapden.Text);
             _Search.Tensach = txtSTenSach.Text;
-            _Search.gianhaptu =Convert.ToInt64(txtgianhaptu.Text);
+            _Search.gianhaptu = Convert.ToInt64(txtgianhaptu.Text);
             _Search.gianhapden = Convert.ToInt64(txtgianhapden.Text);
             BUSSach busSach = new BUSSach(_Search);
             GVSach.DataSource = busSach.timkiemSach();
@@ -87,12 +87,12 @@ namespace XDPM
             txtSgianhaptu.Text = "0";
             txtSTenSach.Text = "";
             txtgianhaptu.Text = "0";
-            txtgianhapden.Text= "0";
+            txtgianhapden.Text = "0";
         }
 
         private void GVSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex>=0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = GVSach.Rows[e.RowIndex];
                 masach = row.Cells[0].Value.ToString();
@@ -109,8 +109,8 @@ namespace XDPM
 
         private void BtThem_Click(object sender, EventArgs e)
         {
-            BUSSach bussach=new BUSSach();
-            if(txtTensach.Text==""||txtTacGia.Text==""||txtGia.Text=="")
+            BUSSach bussach = new BUSSach();
+            if (txtTensach.Text == "" || txtTacGia.Text == "" || txtGia.Text == "")
             {
                 MessageBox.Show("Nhập thiếu thông tin");
             }
@@ -119,7 +119,7 @@ namespace XDPM
                 sach.Masach = bussach.MaSachTuDong();
                 ganProperties();
                 bool result = DALSach.AddSach(sach);
-                if(result==true)
+                if (result == true)
                 {
                     MessageBox.Show("Thêm thành công");
                     load();
@@ -160,3 +160,4 @@ namespace XDPM
         }
     }
 }
+

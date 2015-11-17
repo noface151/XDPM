@@ -32,11 +32,17 @@
             this.MaSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tensach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btTim = new System.Windows.Forms.Button();
+            this.txtgianhapden = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtSgianhapden = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbSTheLoai = new System.Windows.Forms.ComboBox();
+            this.txtgianhaptu = new System.Windows.Forms.TextBox();
             this.cbSNXB = new System.Windows.Forms.ComboBox();
             this.txtSgianhaptu = new System.Windows.Forms.TextBox();
             this.txtSTenSach = new System.Windows.Forms.TextBox();
@@ -44,6 +50,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
+            this.txtgianhap = new System.Windows.Forms.TextBox();
             this.txtGia = new System.Windows.Forms.TextBox();
             this.txtTacGia = new System.Windows.Forms.TextBox();
             this.txtTensach = new System.Windows.Forms.TextBox();
@@ -51,20 +58,13 @@
             this.cbTenNXB = new System.Windows.Forms.ComboBox();
             this.BTSua = new System.Windows.Forms.Button();
             this.BtThem = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtgianhap = new System.Windows.Forms.TextBox();
-            this.txtgianhaptu = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtgianhapden = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.GVSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -119,6 +119,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm";
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(234, 24);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(104, 17);
+            this.checkBox2.TabIndex = 6;
+            this.checkBox2.Text = "Tìm theo thể loại";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(9, 25);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(132, 17);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Tìm theo nhà xuất bản";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // btTim
             // 
             this.btTim.Location = new System.Drawing.Point(594, 131);
@@ -129,6 +149,23 @@
             this.btTim.UseVisualStyleBackColor = true;
             this.btTim.Click += new System.EventHandler(this.btTim_Click);
             // 
+            // txtgianhapden
+            // 
+            this.txtgianhapden.Location = new System.Drawing.Point(550, 105);
+            this.txtgianhapden.Name = "txtgianhapden";
+            this.txtgianhapden.Size = new System.Drawing.Size(119, 20);
+            this.txtgianhapden.TabIndex = 4;
+            this.txtgianhapden.Text = "0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(425, 89);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(62, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Giá nhập từ";
+            // 
             // txtSgianhapden
             // 
             this.txtSgianhapden.Location = new System.Drawing.Point(550, 43);
@@ -136,6 +173,15 @@
             this.txtSgianhapden.Size = new System.Drawing.Size(119, 20);
             this.txtSgianhapden.TabIndex = 4;
             this.txtSgianhapden.Text = "0";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(548, 89);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(27, 13);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Đến";
             // 
             // label5
             // 
@@ -163,6 +209,14 @@
             this.cbSTheLoai.Size = new System.Drawing.Size(165, 21);
             this.cbSTheLoai.TabIndex = 2;
             this.cbSTheLoai.Text = "Chọn thể loại";
+            // 
+            // txtgianhaptu
+            // 
+            this.txtgianhaptu.Location = new System.Drawing.Point(425, 105);
+            this.txtgianhaptu.Name = "txtgianhaptu";
+            this.txtgianhaptu.Size = new System.Drawing.Size(119, 20);
+            this.txtgianhaptu.TabIndex = 1;
+            this.txtgianhaptu.Text = "0";
             // 
             // cbSNXB
             // 
@@ -241,6 +295,13 @@
             this.txtSoLuong.Size = new System.Drawing.Size(178, 20);
             this.txtSoLuong.TabIndex = 4;
             // 
+            // txtgianhap
+            // 
+            this.txtgianhap.Location = new System.Drawing.Point(83, 287);
+            this.txtgianhap.Name = "txtgianhap";
+            this.txtgianhap.Size = new System.Drawing.Size(178, 20);
+            this.txtgianhap.TabIndex = 4;
+            // 
             // txtGia
             // 
             this.txtGia.Location = new System.Drawing.Point(83, 233);
@@ -298,6 +359,15 @@
             this.BtThem.UseVisualStyleBackColor = true;
             this.BtThem.Click += new System.EventHandler(this.BtThem_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 290);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Giá nhập";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -351,76 +421,6 @@
             this.label8.Size = new System.Drawing.Size(71, 13);
             this.label8.TabIndex = 0;
             this.label8.Text = "Nhà xuất bản";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 290);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Giá nhập";
-            // 
-            // txtgianhap
-            // 
-            this.txtgianhap.Location = new System.Drawing.Point(83, 287);
-            this.txtgianhap.Name = "txtgianhap";
-            this.txtgianhap.Size = new System.Drawing.Size(178, 20);
-            this.txtgianhap.TabIndex = 4;
-            // 
-            // txtgianhaptu
-            // 
-            this.txtgianhaptu.Location = new System.Drawing.Point(425, 105);
-            this.txtgianhaptu.Name = "txtgianhaptu";
-            this.txtgianhaptu.Size = new System.Drawing.Size(119, 20);
-            this.txtgianhaptu.TabIndex = 1;
-            this.txtgianhaptu.Text = "0";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(548, 89);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(27, 13);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "Đến";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(425, 89);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 13);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Giá nhập từ";
-            // 
-            // txtgianhapden
-            // 
-            this.txtgianhapden.Location = new System.Drawing.Point(550, 105);
-            this.txtgianhapden.Name = "txtgianhapden";
-            this.txtgianhapden.Size = new System.Drawing.Size(119, 20);
-            this.txtgianhapden.TabIndex = 4;
-            this.txtgianhapden.Text = "0";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(9, 25);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(132, 17);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Tìm theo nhà xuất bản";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(234, 24);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(104, 17);
-            this.checkBox2.TabIndex = 6;
-            this.checkBox2.Text = "Tìm theo thể loại";
-            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // FrmNhapThongTinSach
             // 

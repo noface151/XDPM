@@ -59,6 +59,12 @@ namespace XDPM
             BUSSach bussach = new BUSSach(_search);
             GVSach.DataSource = bussach.timkiemSach();
             load();
+            if (DALPhieuNhap.LayPNtheoma(txtMaPN.Text).TinhTrang == "Đã xong")
+            {
+                BTLuu.Enabled = false;
+                BTSua.Enabled = false;
+                BTXoa.Enabled = false;
+            }
         }
 
         private void BtTim_Click(object sender, EventArgs e)

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtRefresh = new System.Windows.Forms.Button();
+            this.BTlammoi = new System.Windows.Forms.Button();
             this.BtXoa = new System.Windows.Forms.Button();
             this.BTSua = new System.Windows.Forms.Button();
             this.BtGhichitiet = new System.Windows.Forms.Button();
@@ -63,8 +65,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.CBSTinhtrang = new System.Windows.Forms.ComboBox();
             this.CBSNXB = new System.Windows.Forms.ComboBox();
-            this.BTlammoi = new System.Windows.Forms.Button();
-            this.BtRefresh = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVphieuchi)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -96,6 +96,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin phiếu chi nhà xuất bản";
             // 
+            // BtRefresh
+            // 
+            this.BtRefresh.Location = new System.Drawing.Point(232, 363);
+            this.BtRefresh.Name = "BtRefresh";
+            this.BtRefresh.Size = new System.Drawing.Size(75, 23);
+            this.BtRefresh.TabIndex = 15;
+            this.BtRefresh.Text = "Refresh";
+            this.BtRefresh.UseVisualStyleBackColor = true;
+            this.BtRefresh.Click += new System.EventHandler(this.BtRefresh_Click);
+            // 
+            // BTlammoi
+            // 
+            this.BTlammoi.Location = new System.Drawing.Point(724, 36);
+            this.BTlammoi.Name = "BTlammoi";
+            this.BTlammoi.Size = new System.Drawing.Size(75, 23);
+            this.BTlammoi.TabIndex = 14;
+            this.BTlammoi.Text = "Làm mới DS";
+            this.BTlammoi.UseVisualStyleBackColor = true;
+            this.BTlammoi.Click += new System.EventHandler(this.BTlammoi_Click);
+            // 
             // BtXoa
             // 
             this.BtXoa.Location = new System.Drawing.Point(211, 313);
@@ -122,7 +142,7 @@
             this.BtGhichitiet.Name = "BtGhichitiet";
             this.BtGhichitiet.Size = new System.Drawing.Size(114, 23);
             this.BtGhichitiet.TabIndex = 12;
-            this.BtGhichitiet.Text = "Ghi chi tiết phiếu chi";
+            this.BtGhichitiet.Text = "Chi tiết phiếu chi";
             this.BtGhichitiet.UseVisualStyleBackColor = true;
             this.BtGhichitiet.Click += new System.EventHandler(this.BtGhichitiet_Click);
             // 
@@ -417,26 +437,6 @@
             this.CBSNXB.Size = new System.Drawing.Size(248, 21);
             this.CBSNXB.TabIndex = 1;
             this.CBSNXB.Text = "Chọn nhà xuất bản";
-            // 
-            // BTlammoi
-            // 
-            this.BTlammoi.Location = new System.Drawing.Point(724, 36);
-            this.BTlammoi.Name = "BTlammoi";
-            this.BTlammoi.Size = new System.Drawing.Size(75, 23);
-            this.BTlammoi.TabIndex = 14;
-            this.BTlammoi.Text = "Làm mới DS";
-            this.BTlammoi.UseVisualStyleBackColor = true;
-            this.BTlammoi.Click += new System.EventHandler(this.BTlammoi_Click);
-            // 
-            // BtRefresh
-            // 
-            this.BtRefresh.Location = new System.Drawing.Point(232, 363);
-            this.BtRefresh.Name = "BtRefresh";
-            this.BtRefresh.Size = new System.Drawing.Size(75, 23);
-            this.BtRefresh.TabIndex = 15;
-            this.BtRefresh.Text = "Refresh";
-            this.BtRefresh.UseVisualStyleBackColor = true;
-            this.BtRefresh.Click += new System.EventHandler(this.BtRefresh_Click);
             // 
             // FrmChiNXB
             // 

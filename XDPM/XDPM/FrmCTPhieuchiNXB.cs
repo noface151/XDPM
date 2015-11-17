@@ -42,6 +42,10 @@ namespace XDPM
             txtmaPhieuchi.Text = _maphieuchi;
            GVsachbanduoc.DataSource=DALCTPhieuChi.DSsachbanduoctheoNXB(_maNXB);
            load();
+           if (DALPhieuChiNXB.layphieuchitheoma(txtmaPhieuchi.Text).TrangThai == "Đã nhận")
+           {
+               button1.Enabled = false;
+           }
         }
 
         private void GVsachbanduoc_CellClick(object sender, DataGridViewCellEventArgs e)

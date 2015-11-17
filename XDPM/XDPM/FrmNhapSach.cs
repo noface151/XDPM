@@ -242,6 +242,9 @@ namespace XDPM
             txtSTiennhaptu.Text = "0";
             _search.Ngaytu = null;
             _search.Ngayden = null;
+            checkBoxNXB.Checked = false;
+            checkBoxtinhtrang.Checked = false;
+            checkBoxthoigian.Checked = false;
         }
 
         private void BtCTPN_Click(object sender, EventArgs e)
@@ -252,17 +255,11 @@ namespace XDPM
             }
             else
             {
-                if (DALPhieuNhap.LayPNtheoma(txtMaPN.Text).TinhTrang != "Đã xong")
-                {
-                    FrmNhapCTSach nhapCT = new FrmNhapCTSach();
-                    nhapCT.Message = txtMaPN.Text;
-                    nhapCT.MaNXB = CbNXB.SelectedValue.ToString().Trim();
-                    nhapCT.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Phiếu này không thể thêm chi tiết");
-                }
+
+                FrmNhapCTSach nhapCT = new FrmNhapCTSach();
+                nhapCT.Message = txtMaPN.Text;
+                nhapCT.MaNXB = CbNXB.SelectedValue.ToString().Trim();
+                nhapCT.ShowDialog();
             }
         }
 
