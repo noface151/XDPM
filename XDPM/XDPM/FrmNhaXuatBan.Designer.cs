@@ -57,6 +57,9 @@
             this.txtSDuong = new System.Windows.Forms.TextBox();
             this.txtSQuan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSMaNXB = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVNXB)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -86,7 +89,7 @@
             // 
             // BTSua
             // 
-            this.BTSua.Location = new System.Drawing.Point(196, 327);
+            this.BTSua.Location = new System.Drawing.Point(128, 327);
             this.BTSua.Name = "BTSua";
             this.BTSua.Size = new System.Drawing.Size(156, 23);
             this.BTSua.TabIndex = 2;
@@ -96,7 +99,7 @@
             // 
             // BtThem
             // 
-            this.BtThem.Location = new System.Drawing.Point(77, 327);
+            this.BtThem.Location = new System.Drawing.Point(9, 327);
             this.BtThem.Name = "BtThem";
             this.BtThem.Size = new System.Drawing.Size(113, 23);
             this.BtThem.TabIndex = 1;
@@ -142,6 +145,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.txtSDT);
             this.groupBox2.Controls.Add(this.txtSoTK);
             this.groupBox2.Controls.Add(this.txtTienNo);
@@ -156,7 +160,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Location = new System.Drawing.Point(408, 163);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(358, 356);
+            this.groupBox2.Size = new System.Drawing.Size(386, 356);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin nhà xuất bản";
@@ -232,7 +236,7 @@
             // 
             this.txtSTenNXB.Location = new System.Drawing.Point(6, 87);
             this.txtSTenNXB.Name = "txtSTenNXB";
-            this.txtSTenNXB.Size = new System.Drawing.Size(393, 20);
+            this.txtSTenNXB.Size = new System.Drawing.Size(358, 20);
             this.txtSTenNXB.TabIndex = 1;
             // 
             // label1
@@ -271,6 +275,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtSMaNXB);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtSDuong);
@@ -330,6 +336,32 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Nợ từ";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(428, 71);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Mã NXB";
+            // 
+            // txtSMaNXB
+            // 
+            this.txtSMaNXB.Location = new System.Drawing.Point(431, 87);
+            this.txtSMaNXB.Name = "txtSMaNXB";
+            this.txtSMaNXB.Size = new System.Drawing.Size(100, 20);
+            this.txtSMaNXB.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(305, 327);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmNhaXuatBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,5 +415,8 @@
         private System.Windows.Forms.TextBox txtSDuong;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.TextBox txtDiaChi;
+        private System.Windows.Forms.TextBox txtSMaNXB;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }

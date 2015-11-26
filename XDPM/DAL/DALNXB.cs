@@ -110,6 +110,10 @@ namespace DAL
            List<SearchNXB> ListSearch = new List<SearchNXB>();
            var _NXB = (from p in model.Nhaxuatban
                       select p);
+           if(serach.MaNXB!="")
+           {
+               _NXB = _NXB.Where(q => q.MaNXB.Trim().Equals(serach.MaNXB));
+           }
            if(serach.notu!=0&&serach.noden!=0)
            {
                _NXB = _NXB.Where(q => q.No >= serach.notu && q.No <= serach.noden);

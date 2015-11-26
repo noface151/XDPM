@@ -15,7 +15,6 @@ namespace XDPM
     {
         private string _maphieuchi;
         private string _maNXB;
-        string _masach;
         CTphieuchiNXB _ctphieuchi = new CTphieuchiNXB();
         public FrmCTPhieuchiNXB()
         {
@@ -53,21 +52,20 @@ namespace XDPM
             if(e.RowIndex>=0)
             {
                 DataGridViewRow row = GVsachbanduoc.Rows[e.RowIndex];
-                _masach = row.Cells[0].Value.ToString();
-                txttensach.Text = row.Cells[1].Value.ToString();
+                txtmasach.Text = row.Cells[0].Value.ToString();
                 txtsoluong.Text = row.Cells[2].Value.ToString();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(txttensach.Text==""||txtsoluong.Text=="")
+            if(txtmasach.Text==""||txtsoluong.Text=="")
             {
                 MessageBox.Show("Nhập thiếu thông tin");
             }
             else
             {
-                _ctphieuchi.Masach = _masach;
+                _ctphieuchi.Masach = txtmasach.Text;
                 _ctphieuchi.Maphieuchi = txtmaPhieuchi.Text;
                 _ctphieuchi.Soluong = Convert.ToInt16(txtsoluong.Text);
                 _ctphieuchi.Tienchi = _ctphieuchi.Soluong * DALSach.LaySachTheoMa(_ctphieuchi.Masach).GiaNhap;
@@ -77,15 +75,13 @@ namespace XDPM
                     MessageBox.Show("Thêm thành công");
                     DALCTPhieuChi.CapNhatKhiThemCT(_ctphieuchi);
                     load();
-                    _masach = "";
-                    txttensach.Text = "";
+                    txtmasach.Text = "";
                     txtsoluong.Text = "";
                 }
                 else
                 {
                     MessageBox.Show("Thêm thất bại");
-                    _masach = "";
-                    txttensach.Text = "";
+                    txtmasach.Text = "";
                     txtsoluong.Text = "";
                 }
             }

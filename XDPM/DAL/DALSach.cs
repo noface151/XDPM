@@ -121,6 +121,17 @@ namespace DAL
            }
            return ListSearch;
         }
-        
+        public static List<String> laytensach()
+        {
+            DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
+            List<String> ListTenSach = new List<String>();
+            var tensach = from p in model.Sach
+                          select p.Tensach;
+            foreach(var row in tensach)
+            {
+                ListTenSach.Add(row);
+            }
+            return ListTenSach;
+        }
     }
 }

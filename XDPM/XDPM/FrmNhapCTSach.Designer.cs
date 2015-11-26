@@ -34,7 +34,6 @@
             this.MaSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSTensach = new System.Windows.Forms.TextBox();
-            this.BtTim = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BTSua = new System.Windows.Forms.Button();
             this.GVCTPN = new System.Windows.Forms.DataGridView();
@@ -46,10 +45,11 @@
             this.BTLuu = new System.Windows.Forms.Button();
             this.txtSoluong = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtTensach = new System.Windows.Forms.TextBox();
+            this.txtMasach = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMaPN = new System.Windows.Forms.TextBox();
+            this.BtThongTinSach = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVSach)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -61,7 +61,6 @@
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.GVSach);
             this.groupBox3.Controls.Add(this.txtSTensach);
-            this.groupBox3.Controls.Add(this.BtTim);
             this.groupBox3.Location = new System.Drawing.Point(12, 56);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(408, 336);
@@ -107,28 +106,20 @@
             // 
             this.txtSTensach.Location = new System.Drawing.Point(89, 30);
             this.txtSTensach.Name = "txtSTensach";
-            this.txtSTensach.Size = new System.Drawing.Size(186, 20);
+            this.txtSTensach.Size = new System.Drawing.Size(215, 20);
             this.txtSTensach.TabIndex = 2;
-            // 
-            // BtTim
-            // 
-            this.BtTim.Location = new System.Drawing.Point(290, 27);
-            this.BtTim.Name = "BtTim";
-            this.BtTim.Size = new System.Drawing.Size(75, 23);
-            this.BtTim.TabIndex = 3;
-            this.BtTim.Text = "Tìm sách";
-            this.BtTim.UseVisualStyleBackColor = true;
-            this.BtTim.Click += new System.EventHandler(this.BtTim_Click);
+            this.txtSTensach.TextChanged += new System.EventHandler(this.txtSTensach_TextChanged);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.BtThongTinSach);
             this.groupBox2.Controls.Add(this.BTSua);
             this.groupBox2.Controls.Add(this.GVCTPN);
             this.groupBox2.Controls.Add(this.BTXoa);
             this.groupBox2.Controls.Add(this.BTLuu);
             this.groupBox2.Controls.Add(this.txtSoluong);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.txtTensach);
+            this.groupBox2.Controls.Add(this.txtMasach);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(426, 56);
             this.groupBox2.Name = "groupBox2";
@@ -211,7 +202,7 @@
             // 
             this.txtSoluong.Location = new System.Drawing.Point(144, 277);
             this.txtSoluong.Name = "txtSoluong";
-            this.txtSoluong.Size = new System.Drawing.Size(236, 20);
+            this.txtSoluong.Size = new System.Drawing.Size(122, 20);
             this.txtSoluong.TabIndex = 6;
             // 
             // label8
@@ -223,21 +214,22 @@
             this.label8.TabIndex = 5;
             this.label8.Text = "Số lượng";
             // 
-            // txtTensach
+            // txtMasach
             // 
-            this.txtTensach.Location = new System.Drawing.Point(144, 250);
-            this.txtTensach.Name = "txtTensach";
-            this.txtTensach.Size = new System.Drawing.Size(236, 20);
-            this.txtTensach.TabIndex = 4;
+            this.txtMasach.Location = new System.Drawing.Point(144, 250);
+            this.txtMasach.Name = "txtMasach";
+            this.txtMasach.ReadOnly = true;
+            this.txtMasach.Size = new System.Drawing.Size(122, 20);
+            this.txtMasach.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(86, 253);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 13);
+            this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Tên sách";
+            this.label6.Text = "Mã sách";
             // 
             // label1
             // 
@@ -255,6 +247,16 @@
             this.txtMaPN.ReadOnly = true;
             this.txtMaPN.Size = new System.Drawing.Size(150, 20);
             this.txtMaPN.TabIndex = 7;
+            // 
+            // BtThongTinSach
+            // 
+            this.BtThongTinSach.Location = new System.Drawing.Point(272, 248);
+            this.BtThongTinSach.Name = "BtThongTinSach";
+            this.BtThongTinSach.Size = new System.Drawing.Size(118, 23);
+            this.BtThongTinSach.TabIndex = 11;
+            this.BtThongTinSach.Text = "Thông tin sách";
+            this.BtThongTinSach.UseVisualStyleBackColor = true;
+            this.BtThongTinSach.Click += new System.EventHandler(this.BtThongTinSach_Click);
             // 
             // FrmNhapCTSach
             // 
@@ -287,14 +289,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSach;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenSach;
         private System.Windows.Forms.TextBox txtSTensach;
-        private System.Windows.Forms.Button BtTim;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView GVCTPN;
         private System.Windows.Forms.Button BTXoa;
         private System.Windows.Forms.Button BTLuu;
         private System.Windows.Forms.TextBox txtSoluong;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtTensach;
+        private System.Windows.Forms.TextBox txtMasach;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMaPN;
@@ -303,5 +304,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tensach1;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
+        private System.Windows.Forms.Button BtThongTinSach;
     }
 }

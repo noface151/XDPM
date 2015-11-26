@@ -30,18 +30,18 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.GVsachbanduoc = new System.Windows.Forms.DataGridView();
+            this.Masach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tensach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtmaPhieuchi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.txtsoluong = new System.Windows.Forms.TextBox();
-            this.txttensach = new System.Windows.Forms.TextBox();
+            this.txtmasach = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.GVCTPhieuchi = new System.Windows.Forms.DataGridView();
-            this.Masach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tensach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Masachx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tensachx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Soluongx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,6 +75,26 @@
             this.GVsachbanduoc.TabIndex = 4;
             this.GVsachbanduoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GVsachbanduoc_CellClick);
             // 
+            // Masach
+            // 
+            this.Masach.DataPropertyName = "Masach";
+            this.Masach.HeaderText = "Mã sách";
+            this.Masach.Name = "Masach";
+            this.Masach.Visible = false;
+            // 
+            // Tensach
+            // 
+            this.Tensach.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tensach.DataPropertyName = "Tensach";
+            this.Tensach.HeaderText = "Tên sách";
+            this.Tensach.Name = "Tensach";
+            // 
+            // Soluong
+            // 
+            this.Soluong.DataPropertyName = "soluong";
+            this.Soluong.HeaderText = "Số lượng";
+            this.Soluong.Name = "Soluong";
+            // 
             // txtmaPhieuchi
             // 
             this.txtmaPhieuchi.Location = new System.Drawing.Point(87, 10);
@@ -96,7 +116,7 @@
             // 
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.txtsoluong);
-            this.groupBox2.Controls.Add(this.txttensach);
+            this.groupBox2.Controls.Add(this.txtmasach);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.GVCTPhieuchi);
@@ -125,13 +145,13 @@
             this.txtsoluong.Size = new System.Drawing.Size(200, 20);
             this.txtsoluong.TabIndex = 2;
             // 
-            // txttensach
+            // txtmasach
             // 
-            this.txttensach.Location = new System.Drawing.Point(64, 321);
-            this.txttensach.Name = "txttensach";
-            this.txttensach.ReadOnly = true;
-            this.txttensach.Size = new System.Drawing.Size(200, 20);
-            this.txttensach.TabIndex = 2;
+            this.txtmasach.Location = new System.Drawing.Point(64, 321);
+            this.txtmasach.Name = "txtmasach";
+            this.txtmasach.ReadOnly = true;
+            this.txtmasach.Size = new System.Drawing.Size(200, 20);
+            this.txtmasach.TabIndex = 2;
             // 
             // label3
             // 
@@ -147,9 +167,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 324);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Tên sách";
+            this.label1.Text = "Mã sách";
             // 
             // GVCTPhieuchi
             // 
@@ -163,26 +183,6 @@
             this.GVCTPhieuchi.Name = "GVCTPhieuchi";
             this.GVCTPhieuchi.Size = new System.Drawing.Size(454, 271);
             this.GVCTPhieuchi.TabIndex = 0;
-            // 
-            // Masach
-            // 
-            this.Masach.DataPropertyName = "Masach";
-            this.Masach.HeaderText = "Mã sách";
-            this.Masach.Name = "Masach";
-            this.Masach.Visible = false;
-            // 
-            // Tensach
-            // 
-            this.Tensach.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Tensach.DataPropertyName = "Tensach";
-            this.Tensach.HeaderText = "Tên sách";
-            this.Tensach.Name = "Tensach";
-            // 
-            // Soluong
-            // 
-            this.Soluong.DataPropertyName = "soluong";
-            this.Soluong.HeaderText = "Số lượng";
-            this.Soluong.Name = "Soluong";
             // 
             // Masachx
             // 
@@ -242,7 +242,7 @@
         private System.Windows.Forms.DataGridView GVCTPhieuchi;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtsoluong;
-        private System.Windows.Forms.TextBox txttensach;
+        private System.Windows.Forms.TextBox txtmasach;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Masach;

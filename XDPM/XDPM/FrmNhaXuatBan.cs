@@ -115,6 +115,7 @@ namespace XDPM
 
         private void btTim_Click(object sender, EventArgs e)
         {
+            _Search.MaNXB = txtSMaNXB.Text;
             _Search.TenNXB = txtSTenNXB.Text.Trim();
             _Search.Duong = txtSDuong.Text.Trim();
             _Search.Quan = txtSQuan.Text.Trim();
@@ -127,6 +128,11 @@ namespace XDPM
             txtSNotu.Text = "0";
             txtSQuan.Text = "";
             txtSTenNXB.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            reset();
         }
     }
 }

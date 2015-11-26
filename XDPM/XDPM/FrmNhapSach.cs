@@ -75,12 +75,12 @@ namespace XDPM
                     {
                         MessageBox.Show("Thêm thành công");
                         load();
-                        reset();
+
                     }
                     else
                     {
                         MessageBox.Show("Thêm thất bại");
-                        reset();
+                        
                     }
                 }
             }
@@ -115,14 +115,12 @@ namespace XDPM
                                     DALNXB.UpdateNoNXBKhiNhap(_nxb);
                                     MessageBox.Show("Sửa thành công");
                                     load();
-                                    reset();
-                                    txtMaPN.Text = "";
+                                   
                                 }
                                 else
                                 {
                                     MessageBox.Show("Sửa thất bại");
-                                    reset();
-                                    txtMaPN.Text = "";
+                                  
                                 }
                             }
                             else
@@ -139,15 +137,11 @@ namespace XDPM
                             if (result2 == true)
                             {
                                 MessageBox.Show("Sửa thành công");
-                                load();
-                                reset();
-                                txtMaPN.Text = "";
+                                load();                               
                             }
                             else
                             {
-                                MessageBox.Show("Sửa thất bại");
-                                reset();
-                                txtMaPN.Text = "";
+                                MessageBox.Show("Sửa thất bại");                              
                             }
                         }
                         else
@@ -194,15 +188,11 @@ namespace XDPM
                         if (result == true)
                         {
                             MessageBox.Show("Xóa thành công");
-                            load();
-                            reset();
-                            txtMaPN.Text = "";
+                            load();                           
                         }
                         else
                         {
-                            MessageBox.Show("Xóa thất bại");
-                            reset();
-                            txtMaPN.Text = "";
+                            MessageBox.Show("Xóa thất bại");                            
                         }
                     }
                 }
@@ -235,13 +225,12 @@ namespace XDPM
                     _search.Ngayden = null;
                 }
             }
-            _search.MaPN = txtmaphieunhap.Text;
+            _search.MaPN = txtSmaPN.Text;
             _search.tiennhaptu = Convert.ToInt64(txtSTiennhaptu.Text);
             _search.tiennhapden = Convert.ToInt64(txtSTiennhapden.Text);
             GVPN.DataSource = DALPhieuNhap.LayPNtheoTimkiem(_search);
             txtSTiennhapden.Text = "0";
             txtSTiennhaptu.Text = "0";
-            txtmaphieunhap.Text = "";
             _search.Ngaytu = null;
             _search.Ngayden = null;
             checkBoxNXB.Checked = false;

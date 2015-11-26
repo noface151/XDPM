@@ -38,10 +38,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.BTThem = new System.Windows.Forms.Button();
             this.GVphieuchi = new System.Windows.Forms.DataGridView();
-            this.MaPhieuChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tongtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTongtien = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dateNgaylap = new System.Windows.Forms.DateTimePicker();
@@ -65,8 +61,12 @@
             this.label11 = new System.Windows.Forms.Label();
             this.CBSTinhtrang = new System.Windows.Forms.ComboBox();
             this.CBSNXB = new System.Windows.Forms.ComboBox();
-            this.txtSMaphieuchi = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.MaPhieuChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tongtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtSmaPC = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVphieuchi)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -192,34 +192,6 @@
             this.GVphieuchi.TabIndex = 8;
             this.GVphieuchi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GVphieuchi_CellClick);
             // 
-            // MaPhieuChi
-            // 
-            this.MaPhieuChi.DataPropertyName = "Maphieuchi";
-            this.MaPhieuChi.HeaderText = "Mã Phiếu Chi";
-            this.MaPhieuChi.Name = "MaPhieuChi";
-            this.MaPhieuChi.Visible = false;
-            // 
-            // Ngay
-            // 
-            this.Ngay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Ngay.DataPropertyName = "Ngay";
-            this.Ngay.HeaderText = "Ngày lập";
-            this.Ngay.Name = "Ngay";
-            // 
-            // Tongtien
-            // 
-            this.Tongtien.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Tongtien.DataPropertyName = "Tongtien";
-            this.Tongtien.HeaderText = "Tổng tiền";
-            this.Tongtien.Name = "Tongtien";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TrangThai.DataPropertyName = "TrangThai";
-            this.TrangThai.HeaderText = "Trạng thái";
-            this.TrangThai.Name = "TrangThai";
-            // 
             // txtTongtien
             // 
             this.txtTongtien.Location = new System.Drawing.Point(110, 202);
@@ -291,7 +263,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.txtSMaphieuchi);
+            this.groupBox4.Controls.Add(this.txtSmaPC);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.checkBoxthoigian);
             this.groupBox4.Controls.Add(this.checkBoxtinhtrang);
@@ -442,21 +414,48 @@
             this.CBSNXB.TabIndex = 1;
             this.CBSNXB.Text = "Chọn nhà xuất bản";
             // 
-            // txtSMaphieuchi
-            // 
-            this.txtSMaphieuchi.Location = new System.Drawing.Point(659, 50);
-            this.txtSMaphieuchi.Name = "txtSMaphieuchi";
-            this.txtSMaphieuchi.Size = new System.Drawing.Size(127, 20);
-            this.txtSMaphieuchi.TabIndex = 10;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(656, 34);
+            this.label6.Location = new System.Drawing.Point(656, 28);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 13);
-            this.label6.TabIndex = 9;
+            this.label6.TabIndex = 14;
             this.label6.Text = "Mã phiếu chi";
+            // 
+            // MaPhieuChi
+            // 
+            this.MaPhieuChi.DataPropertyName = "Maphieuchi";
+            this.MaPhieuChi.HeaderText = "Mã Phiếu";
+            this.MaPhieuChi.Name = "MaPhieuChi";
+            // 
+            // Ngay
+            // 
+            this.Ngay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Ngay.DataPropertyName = "Ngay";
+            this.Ngay.HeaderText = "Ngày lập";
+            this.Ngay.Name = "Ngay";
+            // 
+            // Tongtien
+            // 
+            this.Tongtien.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tongtien.DataPropertyName = "Tongtien";
+            this.Tongtien.HeaderText = "Tổng tiền";
+            this.Tongtien.Name = "Tongtien";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng thái";
+            this.TrangThai.Name = "TrangThai";
+            // 
+            // txtSmaPC
+            // 
+            this.txtSmaPC.Location = new System.Drawing.Point(659, 50);
+            this.txtSmaPC.Name = "txtSmaPC";
+            this.txtSmaPC.Size = new System.Drawing.Size(100, 20);
+            this.txtSmaPC.TabIndex = 15;
             // 
             // FrmChiNXB
             // 
@@ -510,13 +509,13 @@
         private System.Windows.Forms.ComboBox CBSNXB;
         private System.Windows.Forms.Button BtXoa;
         private System.Windows.Forms.Button BTSua;
+        private System.Windows.Forms.Button BTlammoi;
+        private System.Windows.Forms.Button BtRefresh;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaPhieuChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngay;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tongtien;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
-        private System.Windows.Forms.Button BTlammoi;
-        private System.Windows.Forms.Button BtRefresh;
-        private System.Windows.Forms.TextBox txtSMaphieuchi;
+        private System.Windows.Forms.TextBox txtSmaPC;
         private System.Windows.Forms.Label label6;
 
     }

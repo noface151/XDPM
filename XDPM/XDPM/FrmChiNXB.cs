@@ -35,6 +35,7 @@ namespace XDPM
         {
             txtmaphieuchi.Text = "";
             txtTongtien.Text = "";
+            cbTrangThai.Text = "";
         }
         private void FrmChiNXB_Load(object sender, EventArgs e)
         {
@@ -69,12 +70,10 @@ namespace XDPM
                 {
                     MessageBox.Show("Thêm thành công");
                     load();
-                    reset();
                 }
                 else
                 {
                     MessageBox.Show("Thêm thất bại");
-                    reset();
                 }
             }
         }
@@ -122,14 +121,10 @@ namespace XDPM
                                     DALNXB.UpdateNoNXBKhiTra(_nxb);
                                     MessageBox.Show("Sửa thành công");
                                     load();
-                                    reset();
-                                    txtmaphieuchi.Text = "";
                                 }
                                 else
                                 {
                                     MessageBox.Show("Sửa thất bại");
-                                    reset();
-                                    txtmaphieuchi.Text = "";
                                 }
                             }
                             else
@@ -147,14 +142,10 @@ namespace XDPM
                             {
                                 MessageBox.Show("Sửa thành công");
                                 load();
-                                reset();
-                                txtmaphieuchi.Text = "";
                             }
                             else
                             {
                                 MessageBox.Show("Sửa thất bại");
-                                reset();
-                                txtmaphieuchi.Text = "";
                             }
                         }
                         else
@@ -188,14 +179,10 @@ namespace XDPM
                         {
                             MessageBox.Show("Xóa thành công");
                             load();
-                            reset();
-                            txtmaphieuchi.Text = "";
                         }
                         else
                         {
                             MessageBox.Show("Xóa thất bại");
-                            reset();
-                            txtmaphieuchi.Text = "";
                         }
                     }
                 }
@@ -229,13 +216,12 @@ namespace XDPM
                     _search.Ngayden = null;
                 }
             }
-            _search.Maphieuchi = txtSMaphieuchi.Text;
+            _search.Maphieuchi = txtSmaPC.Text;
             _search.tiennhaptu = Convert.ToInt64(txtSTienchitu.Text);
             _search.tiennhapden = Convert.ToInt64(txtSTienchiden.Text);
             GVphieuchi.DataSource = DALPhieuChiNXB.LayPhieuchitheoTimkiem(_search);
             txtSTienchitu.Text = "0";
             txtSTienchiden.Text = "0";
-            txtSMaphieuchi.Text = "";
             _search.Ngaytu = null;
             _search.Ngayden = null;
         }

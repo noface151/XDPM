@@ -36,10 +36,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.BtSua = new System.Windows.Forms.Button();
             this.GVPN = new System.Windows.Forms.DataGridView();
-            this.MaPn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tongtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtThem = new System.Windows.Forms.Button();
             this.txtTongtien = new System.Windows.Forms.TextBox();
             this.txtMaPN = new System.Windows.Forms.TextBox();
@@ -67,8 +63,12 @@
             this.label11 = new System.Windows.Forms.Label();
             this.CBSTinhtrang = new System.Windows.Forms.ComboBox();
             this.CBSNXB = new System.Windows.Forms.ComboBox();
-            this.txtmaphieunhap = new System.Windows.Forms.TextBox();
+            this.MaPn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tongtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtSmaPN = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVPN)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -171,36 +171,9 @@
             this.TinhTrang});
             this.GVPN.Location = new System.Drawing.Point(327, 66);
             this.GVPN.Name = "GVPN";
-            this.GVPN.Size = new System.Drawing.Size(435, 299);
+            this.GVPN.Size = new System.Drawing.Size(459, 299);
             this.GVPN.TabIndex = 2;
             this.GVPN.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GVPN_CellClick);
-            // 
-            // MaPn
-            // 
-            this.MaPn.DataPropertyName = "MaPN";
-            this.MaPn.HeaderText = "Mã phiếu nhập";
-            this.MaPn.Name = "MaPn";
-            this.MaPn.Visible = false;
-            // 
-            // NgayNhap
-            // 
-            this.NgayNhap.DataPropertyName = "Ngaynhap";
-            this.NgayNhap.FillWeight = 150F;
-            this.NgayNhap.HeaderText = "Ngày nhập";
-            this.NgayNhap.Name = "NgayNhap";
-            // 
-            // Tongtien
-            // 
-            this.Tongtien.DataPropertyName = "Tongtien";
-            this.Tongtien.HeaderText = "Tổng tiền";
-            this.Tongtien.Name = "Tongtien";
-            // 
-            // TinhTrang
-            // 
-            this.TinhTrang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TinhTrang.DataPropertyName = "TinhTrang";
-            this.TinhTrang.HeaderText = "Tình trạng";
-            this.TinhTrang.Name = "TinhTrang";
             // 
             // BtThem
             // 
@@ -310,7 +283,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.txtmaphieunhap);
+            this.groupBox4.Controls.Add(this.txtSmaPN);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.checkBoxthoigian);
             this.groupBox4.Controls.Add(this.checkBoxtinhtrang);
@@ -461,21 +434,47 @@
             this.CBSNXB.TabIndex = 1;
             this.CBSNXB.Text = "Chọn nhà xuất bản";
             // 
-            // txtmaphieunhap
+            // MaPn
             // 
-            this.txtmaphieunhap.Location = new System.Drawing.Point(659, 50);
-            this.txtmaphieunhap.Name = "txtmaphieunhap";
-            this.txtmaphieunhap.Size = new System.Drawing.Size(127, 20);
-            this.txtmaphieunhap.TabIndex = 15;
+            this.MaPn.DataPropertyName = "MaPN";
+            this.MaPn.HeaderText = "Mã phiếu ";
+            this.MaPn.Name = "MaPn";
+            // 
+            // NgayNhap
+            // 
+            this.NgayNhap.DataPropertyName = "Ngaynhap";
+            this.NgayNhap.FillWeight = 150F;
+            this.NgayNhap.HeaderText = "Ngày nhập";
+            this.NgayNhap.Name = "NgayNhap";
+            // 
+            // Tongtien
+            // 
+            this.Tongtien.DataPropertyName = "Tongtien";
+            this.Tongtien.HeaderText = "Tổng tiền";
+            this.Tongtien.Name = "Tongtien";
+            // 
+            // TinhTrang
+            // 
+            this.TinhTrang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TinhTrang.DataPropertyName = "TinhTrang";
+            this.TinhTrang.HeaderText = "Tình trạng";
+            this.TinhTrang.Name = "TinhTrang";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(656, 34);
+            this.label7.Location = new System.Drawing.Point(656, 31);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 13);
             this.label7.TabIndex = 14;
             this.label7.Text = "Mã phiếu nhập";
+            // 
+            // txtSmaPN
+            // 
+            this.txtSmaPN.Location = new System.Drawing.Point(659, 51);
+            this.txtSmaPN.Name = "txtSmaPN";
+            this.txtSmaPN.Size = new System.Drawing.Size(100, 20);
+            this.txtSmaPN.TabIndex = 15;
             // 
             // FrmNhapSach
             // 
@@ -528,16 +527,16 @@
         private System.Windows.Forms.Button BtXoa;
         private System.Windows.Forms.TextBox txtTongtien;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaPn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayNhap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tongtien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang;
         private System.Windows.Forms.CheckBox checkBoxNXB;
         private System.Windows.Forms.CheckBox checkBoxtinhtrang;
         private System.Windows.Forms.CheckBox checkBoxthoigian;
         private System.Windows.Forms.Button BtLamMoi;
         private System.Windows.Forms.Button BtReset;
-        private System.Windows.Forms.TextBox txtmaphieunhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaPn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayNhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tongtien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang;
+        private System.Windows.Forms.TextBox txtSmaPN;
         private System.Windows.Forms.Label label7;
     }
 }
