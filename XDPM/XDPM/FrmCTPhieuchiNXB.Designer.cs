@@ -30,9 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.GVsachbanduoc = new System.Windows.Forms.DataGridView();
-            this.Masach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tensach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtmaPhieuchi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -46,6 +43,9 @@
             this.Tensachx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Soluongx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tienchi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Masach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tensach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVsachbanduoc)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -57,7 +57,7 @@
             this.groupBox1.Controls.Add(this.GVsachbanduoc);
             this.groupBox1.Location = new System.Drawing.Point(16, 36);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(388, 402);
+            this.groupBox1.Size = new System.Drawing.Size(401, 402);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Số sách bán được";
@@ -71,29 +71,9 @@
             this.Soluong});
             this.GVsachbanduoc.Location = new System.Drawing.Point(6, 31);
             this.GVsachbanduoc.Name = "GVsachbanduoc";
-            this.GVsachbanduoc.Size = new System.Drawing.Size(368, 356);
+            this.GVsachbanduoc.Size = new System.Drawing.Size(389, 356);
             this.GVsachbanduoc.TabIndex = 4;
             this.GVsachbanduoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GVsachbanduoc_CellClick);
-            // 
-            // Masach
-            // 
-            this.Masach.DataPropertyName = "Masach";
-            this.Masach.HeaderText = "Mã sách";
-            this.Masach.Name = "Masach";
-            this.Masach.Visible = false;
-            // 
-            // Tensach
-            // 
-            this.Tensach.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Tensach.DataPropertyName = "Tensach";
-            this.Tensach.HeaderText = "Tên sách";
-            this.Tensach.Name = "Tensach";
-            // 
-            // Soluong
-            // 
-            this.Soluong.DataPropertyName = "soluong";
-            this.Soluong.HeaderText = "Số lượng";
-            this.Soluong.Name = "Soluong";
             // 
             // txtmaPhieuchi
             // 
@@ -210,6 +190,27 @@
             this.Tienchi.HeaderText = "Tiền chi";
             this.Tienchi.Name = "Tienchi";
             // 
+            // Masach
+            // 
+            this.Masach.DataPropertyName = "Masach";
+            this.Masach.FillWeight = 50F;
+            this.Masach.HeaderText = "Mã sách";
+            this.Masach.Name = "Masach";
+            this.Masach.Width = 50;
+            // 
+            // Tensach
+            // 
+            this.Tensach.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tensach.DataPropertyName = "Tensach";
+            this.Tensach.HeaderText = "Tên sách";
+            this.Tensach.Name = "Tensach";
+            // 
+            // Soluong
+            // 
+            this.Soluong.DataPropertyName = "soluong";
+            this.Soluong.HeaderText = "Số lượng";
+            this.Soluong.Name = "Soluong";
+            // 
             // FrmCTPhieuchiNXB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,12 +246,12 @@
         private System.Windows.Forms.TextBox txtmasach;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Masach;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tensach;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Soluong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Masachx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tensachx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Soluongx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tienchi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Masach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tensach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Soluong;
     }
 }

@@ -62,12 +62,10 @@ namespace XDPM
                 {
                     MessageBox.Show("Thêm thành công");
                     load();
-                    reset();
                 }
                 else
                 {
                     MessageBox.Show("Thêm thất bại");
-                    reset();
                 }
             }
         }
@@ -102,13 +100,10 @@ namespace XDPM
                 {
                     MessageBox.Show("Sửa thành công");
                     load();
-                    reset();
                 }
                 else
                 {
                     MessageBox.Show("Sửa thất bại");
-                    load();
-                    reset();
                 }
             }
         }

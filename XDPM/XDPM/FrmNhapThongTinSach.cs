@@ -124,12 +124,10 @@ namespace XDPM
                 {
                     MessageBox.Show("Thêm thành công");
                     load();
-                    ReSet();
                 }
                 else
                 {
                     MessageBox.Show("Thêm thất bại");
-                    ReSet();
                 }
             }
         }
