@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL;
+using BUS;
+using System.Diagnostics;
+using System.IO;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace XDPM
 {
@@ -20,29 +24,33 @@ namespace XDPM
 
         private void BtThongKe_Click(object sender, EventArgs e)
         {
-            ThongKeSachBanDuoc tk=new ThongKeSachBanDuoc();
-            if(checkBoxdaily.Checked==false&&checkBoxthoigian.Checked==false)
+            int flag = 0;
+            string madaily = "";
+            DateTime? tungay = null, denngay = null;
+            if (checkBoxdaily.Checked == false && checkBoxthoigian.Checked == false)
             {
                 MessageBox.Show("Không có dữ liệu để thóng kê");
             }
             else
             {
-                if(checkBoxdaily.Checked==true)
+                if (checkBoxdaily.Checked == true)
                 {
-                    tk.MaDaiLy=cbDaily.SelectedValue.ToString();
+                    madaily = cbDaily.SelectedValue.ToString();
                 }
-                if(checkBoxthoigian.Checked==true)
+                if (checkBoxthoigian.Checked == true)
                 {
-                    tk.Tungay=Convert.ToDateTime(datetungay.Text);
-                    tk.Dengay=Convert.ToDateTime(datedenngay.Text);
-                    if(tk.Tungay<tk.Dengay)
+                    tungay = Convert.ToDateTime(datetungay.Text);
+                    denngay = Convert.ToDateTime(datedenngay.Text);
+                    if (tungay > denngay)
                     {
                         MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc");
-                        tk.Tungay = null;
-                        tk.Dengay = null;
+                        tungay = null;
+                        denngay = null;
+                        flag = 1;
                     }
                 }
-                dataGridView1.DataSource = DALThongKeSachBanDuoc.ThongKe(tk);
+                if(flag==0)
+               dataGridView1.DataSource = DALThongKeSachBanDuoc.ThongKe(madaily,tungay,denngay);
             }
         }
         private void FrmThongKeSachBanDuoc_Load(object sender, EventArgs e)
@@ -51,6 +59,77 @@ namespace XDPM
             cbDaily.DataSource = DALDaiLy.loadDaily();
             cbDaily.DisplayMember = "Tendaily";
             cbDaily.ValueMember = "Madaily";
-        }  
+            txtmota.Hide();
+            labelmota.Hide();
+        }
+
+        private void BtVietbaocao_Click(object sender, EventArgs e)
+        {
+            int flag = 0;
+            txtmota.Show();
+            labelmota.Show();
+            string madaily = "";
+            DateTime? tungay = null,denngay=null;
+            if (txtmota.Text == "")
+            {
+                MessageBox.Show("Hãy nhập mô tả cho file báo cáo");
+            }
+            else
+            {
+                if (checkBoxdaily.Checked == false && checkBoxthoigian.Checked == false)
+                {
+                    MessageBox.Show("Không có dữ liệu để thóng kê");
+                }
+                else
+                {
+                    if (checkBoxdaily.Checked == true)
+                    {
+                        madaily = cbDaily.SelectedValue.ToString();
+                    }
+                    if (checkBoxthoigian.Checked == true)
+                    {
+                       tungay = Convert.ToDateTime(datetungay.Text);
+                       denngay = Convert.ToDateTime(datedenngay.Text);
+                        if (tungay > denngay)
+                        {
+                            flag = 1;
+                            MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc");
+                            tungay = null;
+                            denngay = null;
+                        }
+                    }
+                    if (flag == 0)
+                    {
+                        BUSThongKeSachBan thongke = new BUSThongKeSachBan();
+                        thongke.Motafile = txtmota.Text;
+                        thongke.Madaily = madaily;
+                        thongke.Tungay = tungay;
+                        thongke.Denngay = denngay;
+                        string path = thongke.ThongKeSachBan();
+                        if (path != "")
+                        {
+                            MessageBox.Show("Lưu báo cáo thành công");
+                            DialogResult result = MessageBox.Show("Có muốn xem báo cáo vừa ghi ?", "Xem báo cáo", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
+                            {
+                                ProcessStartInfo ps = new ProcessStartInfo();
+                                ps.FileName = Path.GetFileName(path);
+                                ps.WorkingDirectory = Path.GetDirectoryName(path);
+                                Process.Start(ps);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Đã tồn tại file, mời nhập lại mô tả");
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
+
+    
+
+

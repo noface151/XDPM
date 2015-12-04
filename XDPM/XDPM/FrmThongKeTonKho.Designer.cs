@@ -35,19 +35,25 @@
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
+            this.labelmota = new System.Windows.Forms.Label();
+            this.BtVietBaoCao = new System.Windows.Forms.Button();
+            this.txtMoTa = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GVthongke)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtMoTa);
+            this.groupBox1.Controls.Add(this.BtVietBaoCao);
+            this.groupBox1.Controls.Add(this.labelmota);
             this.groupBox1.Controls.Add(this.BtXemtonkho);
             this.groupBox1.Controls.Add(this.GVthongke);
             this.groupBox1.Controls.Add(this.dateTimePicker2);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(467, 430);
+            this.groupBox1.Size = new System.Drawing.Size(697, 430);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống kê theo thời gian";
@@ -70,7 +76,7 @@
             this.SoLuong});
             this.GVthongke.Location = new System.Drawing.Point(9, 68);
             this.GVthongke.Name = "GVthongke";
-            this.GVthongke.Size = new System.Drawing.Size(438, 356);
+            this.GVthongke.Size = new System.Drawing.Size(505, 356);
             this.GVthongke.TabIndex = 4;
             // 
             // Tensach
@@ -103,11 +109,37 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Xem đến ngày";
             // 
+            // labelmota
+            // 
+            this.labelmota.AutoSize = true;
+            this.labelmota.Location = new System.Drawing.Point(374, 31);
+            this.labelmota.Name = "labelmota";
+            this.labelmota.Size = new System.Drawing.Size(50, 13);
+            this.labelmota.TabIndex = 6;
+            this.labelmota.Text = "Mô tả file";
+            // 
+            // BtVietBaoCao
+            // 
+            this.BtVietBaoCao.Location = new System.Drawing.Point(287, 26);
+            this.BtVietBaoCao.Name = "BtVietBaoCao";
+            this.BtVietBaoCao.Size = new System.Drawing.Size(75, 23);
+            this.BtVietBaoCao.TabIndex = 7;
+            this.BtVietBaoCao.Text = "Viết báo cáo";
+            this.BtVietBaoCao.UseVisualStyleBackColor = true;
+            this.BtVietBaoCao.Click += new System.EventHandler(this.BtVietBaoCao_Click);
+            // 
+            // txtMoTa
+            // 
+            this.txtMoTa.Location = new System.Drawing.Point(430, 28);
+            this.txtMoTa.Name = "txtMoTa";
+            this.txtMoTa.Size = new System.Drawing.Size(261, 20);
+            this.txtMoTa.TabIndex = 8;
+            // 
             // FrmThongKeTonKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 455);
+            this.ClientSize = new System.Drawing.Size(738, 455);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmThongKeTonKho";
             this.Text = "Thống kê tồn kho";
@@ -128,5 +160,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtMoTa;
+        private System.Windows.Forms.Button BtVietBaoCao;
+        private System.Windows.Forms.Label labelmota;
     }
 }

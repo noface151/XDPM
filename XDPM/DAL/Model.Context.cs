@@ -38,5 +38,8 @@ namespace DAL
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<TTbansachDL> TTbansachDL { get; set; }
         public DbSet<TheLoai> TheLoai { get; set; }
+        public DbSet<CTPhieuDat> CTPhieuDat { get; set; }
+        public DbSet<PhieuDatSach> PhieuDatSach { get; set; }
+        public DbSet<TaiKhoanDaiLy> TaiKhoanDaiLy { get; set; }
     }
 }

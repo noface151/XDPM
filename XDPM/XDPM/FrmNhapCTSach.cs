@@ -18,7 +18,7 @@ namespace XDPM
         private string _maNXB;
         long giacu = 0;
         int soluongcu = 0;
-        SearchSach _search = new SearchSach();
+        DTOSach _search = new DTOSach();
         CTPNsach _ctPN = new CTPNsach();
         PNsach _pnsach = new PNsach();
         public FrmNhapCTSach()

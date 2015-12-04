@@ -12,23 +12,14 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class PXsach
+    public partial class CTPhieuDat
     {
-        public PXsach()
-        {
-            this.CTPXsach = new HashSet<CTPXsach>();
-        }
-    
-        public string MaPX { get; set; }
-        public string Madaily { get; set; }
-        public System.DateTime Ngayxuat { get; set; }
-        public long Tongtien { get; set; }
-        public string Nguoinhan { get; set; }
-        public string TinhTrang { get; set; }
         public string MaPhieuDat { get; set; }
+        public string Masach { get; set; }
+        public int SoLuong { get; set; }
+        public long Gia { get; set; }
     
-        public virtual ICollection<CTPXsach> CTPXsach { get; set; }
-        public virtual Daily Daily { get; set; }
         public virtual PhieuDatSach PhieuDatSach { get; set; }
+        public virtual Sach Sach { get; set; }
     }
 }

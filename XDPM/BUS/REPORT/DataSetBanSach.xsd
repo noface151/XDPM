@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetBanSach" targetNamespace="http://tempuri.org/DataSetBanSach.xsd" xmlns:mstns="http://tempuri.org/DataSetBanSach.xsd" xmlns="http://tempuri.org/DataSetBanSach.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetBanSach" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetBanSach" msprop:Generator_UserDSName="DataSetBanSach">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SachBan" msprop:Generator_TableClassName="SachBanDataTable" msprop:Generator_TableVarName="tableSachBan" msprop:Generator_RowChangedName="SachBanRowChanged" msprop:Generator_TablePropName="SachBan" msprop:Generator_RowDeletingName="SachBanRowDeleting" msprop:Generator_RowChangingName="SachBanRowChanging" msprop:Generator_RowEvHandlerName="SachBanRowChangeEventHandler" msprop:Generator_RowDeletedName="SachBanRowDeleted" msprop:Generator_RowClassName="SachBanRow" msprop:Generator_UserTableName="SachBan" msprop:Generator_RowEvArgName="SachBanRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Tensach" msprop:Generator_ColumnVarNameInTable="columnTensach" msprop:Generator_ColumnPropNameInRow="Tensach" msprop:Generator_ColumnPropNameInTable="TensachColumn" msprop:Generator_UserColumnName="Tensach" type="xs:string" minOccurs="0" />
+              <xs:element name="soluong" msprop:Generator_ColumnVarNameInTable="columnsoluong" msprop:Generator_ColumnPropNameInRow="soluong" msprop:Generator_ColumnPropNameInTable="soluongColumn" msprop:Generator_UserColumnName="soluong" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

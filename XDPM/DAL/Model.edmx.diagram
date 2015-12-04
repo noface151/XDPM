@@ -32,6 +32,14 @@
         <AssociationConnector Association="DBQLPhatHanhSachModel.FK_TTbansachDL_Phieuthusach" ManuallyRouted="false" />
         <AssociationConnector Association="DBQLPhatHanhSachModel.FK_Sach_TheLoai" ManuallyRouted="false" />
         <AssociationConnector Association="DBQLPhatHanhSachModel.FK_TTbansachDL_Sach1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.CTPhieuDat" Width="1.5" PointX="10.25" PointY="10.125" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.PhieuDatSach" Width="1.5" PointX="8" PointY="14.625" />
+        <EntityTypeShape EntityType="DBQLPhatHanhSachModel.TaiKhoanDaiLy" Width="1.5" PointX="8" PointY="17.875" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_CTPhieuDat_PhieuDatSach" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_CTPhieuDat_Sach" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_PhieuDatSach_Daily" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_TaiKhoanDaiLy_Daily" />
+        <AssociationConnector Association="DBQLPhatHanhSachModel.FK_PXsach_PhieuDatSach" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

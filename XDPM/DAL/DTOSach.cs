@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class SearchSach
+    public class DTOSach
     {
         public string Masach { get; set; }
         public string MaNXB { get; set; }
@@ -16,5 +16,6 @@ namespace DAL
         public string Tensach { get; set; }
         public long gianhaptu { get; set; }
         public long gianhapden { get; set; }
+        public int soluong { get; set; }
     }
 }

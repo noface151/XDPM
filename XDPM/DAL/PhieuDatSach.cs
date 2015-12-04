@@ -12,25 +12,22 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Daily
+    public partial class PhieuDatSach
     {
-        public Daily()
+        public PhieuDatSach()
         {
+            this.CTPhieuDat = new HashSet<CTPhieuDat>();
             this.PXsach = new HashSet<PXsach>();
-            this.Phieuthusach = new HashSet<Phieuthusach>();
-            this.PhieuDatSach = new HashSet<PhieuDatSach>();
-            this.TaiKhoanDaiLy = new HashSet<TaiKhoanDaiLy>();
         }
     
+        public string MaPhieuDat { get; set; }
         public string Madaily { get; set; }
-        public string Tendaily { get; set; }
-        public string Diachi { get; set; }
-        public string SDT { get; set; }
-        public long No { get; set; }
+        public System.DateTime NgayDat { get; set; }
+        public long TongTien { get; set; }
+        public string TinhTrang { get; set; }
     
+        public virtual ICollection<CTPhieuDat> CTPhieuDat { get; set; }
+        public virtual Daily Daily { get; set; }
         public virtual ICollection<PXsach> PXsach { get; set; }
-        public virtual ICollection<Phieuthusach> Phieuthusach { get; set; }
-        public virtual ICollection<PhieuDatSach> PhieuDatSach { get; set; }
-        public virtual ICollection<TaiKhoanDaiLy> TaiKhoanDaiLy { get; set; }
     }
 }

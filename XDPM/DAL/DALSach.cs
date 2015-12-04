@@ -68,10 +68,10 @@ namespace DAL
                        select p;
             return List=sach.ToList(); ;
         }
-        public static List<SearchSach>LaySachTheoTimKiem(SearchSach Search)
+        public static List<DTOSach>LaySachTheoTimKiem(DTOSach Search)
         {
             DBQLPhatHanhSachEntities model = new DBQLPhatHanhSachEntities();
-            List<SearchSach> ListSearch=new List<SearchSach>();
+            List<DTOSach> ListSearch=new List<DTOSach>();
             var DSSach = (from p in model.Sach
                           select p);
             if(Search.Masach!="")
@@ -114,7 +114,7 @@ namespace DAL
             }
            foreach(var row in DSSach)
            {
-               SearchSach _SearchSach = new SearchSach();
+               DTOSach _SearchSach = new DTOSach();
                _SearchSach.Masach = row.Masach;
                _SearchSach.Tensach = row.Tensach;
                ListSearch.Add(_SearchSach);

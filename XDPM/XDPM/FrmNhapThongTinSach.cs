@@ -16,7 +16,7 @@ namespace XDPM
     {
         Sach sach = new Sach();
         string masach = "";
-        SearchSach _Search = new SearchSach();
+        DTOSach _Search = new DTOSach();
         public FrmNhapThongTinSach()
         {
             InitializeComponent();

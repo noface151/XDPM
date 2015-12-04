@@ -10,8 +10,8 @@ namespace BUS
 {
     public class BUSSach
     {
-        SearchSach Search;
-        public BUSSach(SearchSach Search)
+        DTOSach Search;
+        public BUSSach(DTOSach Search)
         {
             this.Search = Search;
         }
@@ -22,14 +22,14 @@ namespace BUS
             string Masach="SA"+tongSoluong.ToString();           
             return Masach;
         }   
-        public List<SearchSach> timkiemSach()
+        public List<DTOSach> timkiemSach()
         {
             HotroTimKiemTheoTen convert = new HotroTimKiemTheoTen();
             string SearchText =convert.ConvertString(Search.Tensach).ToLower();
-            List<SearchSach> ListSearch;
+            List<DTOSach> ListSearch;
             if(Search.Tensach!="")
             {
-                ListSearch = DALSach.LaySachTheoTimKiem(Search).FindAll(delegate(SearchSach sach)
+                ListSearch = DALSach.LaySachTheoTimKiem(Search).FindAll(delegate(DTOSach sach)
                 {
                     if (convert.ConvertString(sach.Tensach).ToLower().Contains(SearchText))
                         return true;

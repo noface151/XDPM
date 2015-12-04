@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CTPhieuDat.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DALCTPhieuChi.cs" />
     <Compile Include="DALCTPN.cs" />
     <Compile Include="DALDaiLy.cs" />
@@ -91,6 +94,9 @@
     <Compile Include="PhieuchiNXB.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="PhieuDatSach.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Phieuthusach.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -107,14 +113,16 @@
     <Compile Include="SearchDaily.cs" />
     <Compile Include="SearchNXB.cs" />
     <Compile Include="SearchPhieuNhap.cs" />
-    <Compile Include="SearchSach.cs" />
+    <Compile Include="DTOSach.cs" />
     <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaiKhoanDaiLy.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TheLoai.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ThongKeSachBanDuoc.cs" />
     <Compile Include="TTbansachDL.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

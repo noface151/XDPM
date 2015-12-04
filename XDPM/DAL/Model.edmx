@@ -35,6 +35,16 @@
           <Property Name="Soluong" Type="int" Nullable="false" />
           <Property Name="Tienchi" Type="bigint" Nullable="false" />
         </EntityType>
+        <EntityType Name="CTPhieuDat">
+          <Key>
+            <PropertyRef Name="MaPhieuDat" />
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="MaPhieuDat" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Masach" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="Gia" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="Daily">
           <Key>
             <PropertyRef Name="Madaily" />
@@ -73,6 +83,7 @@
           </Key>
           <Property Name="MaPX" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Madaily" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaPhieuDat" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Ngayxuat" Type="datetime" Nullable="false" />
           <Property Name="Tongtien" Type="bigint" Nullable="false" />
           <Property Name="Nguoinhan" Type="nvarchar" MaxLength="50" />
@@ -87,6 +98,16 @@
           <Property Name="Ngay" Type="datetime" Nullable="false" />
           <Property Name="Tongtien" Type="bigint" Nullable="false" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhieuDatSach">
+          <Key>
+            <PropertyRef Name="MaPhieuDat" />
+          </Key>
+          <Property Name="MaPhieuDat" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Madaily" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NgayDat" Type="datetime" Nullable="false" />
+          <Property Name="TongTien" Type="bigint" Nullable="false" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Phieuthusach">
           <Key>
@@ -119,6 +140,14 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TaiKhoanDaiLy">
+          <Key>
+            <PropertyRef Name="TaiKhoan" />
+          </Key>
+          <Property Name="TaiKhoan" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MatKhau" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Madaily" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="TTbansachDL">
           <Key>
@@ -198,6 +227,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CTPhieuDat_PhieuDatSach">
+          <End Role="PhieuDatSach" Type="Self.PhieuDatSach" Multiplicity="1" />
+          <End Role="CTPhieuDat" Type="Self.CTPhieuDat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhieuDatSach">
+              <PropertyRef Name="MaPhieuDat" />
+            </Principal>
+            <Dependent Role="CTPhieuDat">
+              <PropertyRef Name="MaPhieuDat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTPhieuDat_Sach">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+          <End Role="CTPhieuDat" Type="Self.CTPhieuDat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="Masach" />
+            </Principal>
+            <Dependent Role="CTPhieuDat">
+              <PropertyRef Name="Masach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PNsach_Nhaxuatban">
           <End Role="Nhaxuatban" Type="Self.Nhaxuatban" Multiplicity="1" />
           <End Role="PNsach" Type="Self.PNsach" Multiplicity="*" />
@@ -222,6 +275,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PXsach_PhieuDatSach">
+          <End Role="PhieuDatSach" Type="Self.PhieuDatSach" Multiplicity="1" />
+          <End Role="PXsach" Type="Self.PXsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhieuDatSach">
+              <PropertyRef Name="MaPhieuDat" />
+            </Principal>
+            <Dependent Role="PXsach">
+              <PropertyRef Name="MaPhieuDat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PhieuchiNXB_Nhaxuatban">
           <End Role="Nhaxuatban" Type="Self.Nhaxuatban" Multiplicity="1" />
           <End Role="PhieuchiNXB" Type="Self.PhieuchiNXB" Multiplicity="*" />
@@ -231,6 +296,18 @@
             </Principal>
             <Dependent Role="PhieuchiNXB">
               <PropertyRef Name="MaNXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuDatSach_Daily">
+          <End Role="Daily" Type="Self.Daily" Multiplicity="1" />
+          <End Role="PhieuDatSach" Type="Self.PhieuDatSach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily">
+              <PropertyRef Name="Madaily" />
+            </Principal>
+            <Dependent Role="PhieuDatSach">
+              <PropertyRef Name="Madaily" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -267,6 +344,18 @@
             </Principal>
             <Dependent Role="Sach">
               <PropertyRef Name="MaTheLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaiKhoanDaiLy_Daily">
+          <End Role="Daily" Type="Self.Daily" Multiplicity="1" />
+          <End Role="TaiKhoanDaiLy" Type="Self.TaiKhoanDaiLy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily">
+              <PropertyRef Name="Madaily" />
+            </Principal>
+            <Dependent Role="TaiKhoanDaiLy">
+              <PropertyRef Name="Madaily" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -310,14 +399,17 @@
           <EntitySet Name="CTPNsach" EntityType="Self.CTPNsach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTPXsach" EntityType="Self.CTPXsach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTphieuchiNXB" EntityType="Self.CTphieuchiNXB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTPhieuDat" EntityType="Self.CTPhieuDat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Daily" EntityType="Self.Daily" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nhaxuatban" EntityType="Self.Nhaxuatban" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PNsach" EntityType="Self.PNsach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PXsach" EntityType="Self.PXsach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuchiNXB" EntityType="Self.PhieuchiNXB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuDatSach" EntityType="Self.PhieuDatSach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Phieuthusach" EntityType="Self.Phieuthusach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiKhoanDaiLy" EntityType="Self.TaiKhoanDaiLy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TTbansachDL" EntityType="Self.TTbansachDL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TheLoai" EntityType="Self.TheLoai" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CTPNsach_PNsach" Association="Self.FK_CTPNsach_PNsach">
@@ -340,6 +432,14 @@
             <End Role="PhieuchiNXB" EntitySet="PhieuchiNXB" />
             <End Role="CTphieuchiNXB" EntitySet="CTphieuchiNXB" />
           </AssociationSet>
+          <AssociationSet Name="FK_CTPhieuDat_PhieuDatSach" Association="Self.FK_CTPhieuDat_PhieuDatSach">
+            <End Role="PhieuDatSach" EntitySet="PhieuDatSach" />
+            <End Role="CTPhieuDat" EntitySet="CTPhieuDat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTPhieuDat_Sach" Association="Self.FK_CTPhieuDat_Sach">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="CTPhieuDat" EntitySet="CTPhieuDat" />
+          </AssociationSet>
           <AssociationSet Name="FK_PNsach_Nhaxuatban" Association="Self.FK_PNsach_Nhaxuatban">
             <End Role="Nhaxuatban" EntitySet="Nhaxuatban" />
             <End Role="PNsach" EntitySet="PNsach" />
@@ -348,9 +448,17 @@
             <End Role="Daily" EntitySet="Daily" />
             <End Role="PXsach" EntitySet="PXsach" />
           </AssociationSet>
+          <AssociationSet Name="FK_PXsach_PhieuDatSach" Association="Self.FK_PXsach_PhieuDatSach">
+            <End Role="PhieuDatSach" EntitySet="PhieuDatSach" />
+            <End Role="PXsach" EntitySet="PXsach" />
+          </AssociationSet>
           <AssociationSet Name="FK_PhieuchiNXB_Nhaxuatban" Association="Self.FK_PhieuchiNXB_Nhaxuatban">
             <End Role="Nhaxuatban" EntitySet="Nhaxuatban" />
             <End Role="PhieuchiNXB" EntitySet="PhieuchiNXB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuDatSach_Daily" Association="Self.FK_PhieuDatSach_Daily">
+            <End Role="Daily" EntitySet="Daily" />
+            <End Role="PhieuDatSach" EntitySet="PhieuDatSach" />
           </AssociationSet>
           <AssociationSet Name="FK_Phieuthusach_Daily" Association="Self.FK_Phieuthusach_Daily">
             <End Role="Daily" EntitySet="Daily" />
@@ -363,6 +471,10 @@
           <AssociationSet Name="FK_Sach_TheLoai" Association="Self.FK_Sach_TheLoai">
             <End Role="TheLoai" EntitySet="TheLoai" />
             <End Role="Sach" EntitySet="Sach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaiKhoanDaiLy_Daily" Association="Self.FK_TaiKhoanDaiLy_Daily">
+            <End Role="Daily" EntitySet="Daily" />
+            <End Role="TaiKhoanDaiLy" EntitySet="TaiKhoanDaiLy" />
           </AssociationSet>
           <AssociationSet Name="FK_TTbansachDL_Phieuthusach" Association="Self.FK_TTbansachDL_Phieuthusach">
             <End Role="Phieuthusach" EntitySet="Phieuthusach" />
@@ -428,6 +540,8 @@
           <Property Name="No" Type="Int64" Nullable="false" />
           <NavigationProperty Name="PXsach" Relationship="Self.FK_PXsach_Daily" FromRole="Daily" ToRole="PXsach" />
           <NavigationProperty Name="Phieuthusach" Relationship="Self.FK_Phieuthusach_Daily" FromRole="Daily" ToRole="Phieuthusach" />
+          <NavigationProperty Name="PhieuDatSach" Relationship="DBQLPhatHanhSachModel.FK_PhieuDatSach_Daily" FromRole="Daily" ToRole="PhieuDatSach" />
+          <NavigationProperty Name="TaiKhoanDaiLy" Relationship="DBQLPhatHanhSachModel.FK_TaiKhoanDaiLy_Daily" FromRole="Daily" ToRole="TaiKhoanDaiLy" />
         </EntityType>
         <EntityType Name="Nhaxuatban">
           <Key>
@@ -468,6 +582,8 @@
           <NavigationProperty Name="CTPXsach" Relationship="Self.FK_CTPXsach_PXsach" FromRole="PXsach" ToRole="CTPXsach" />
           <NavigationProperty Name="Daily" Relationship="Self.FK_PXsach_Daily" FromRole="PXsach" ToRole="Daily" />
           <Property Name="TinhTrang" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaPhieuDat" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PhieuDatSach" Relationship="DBQLPhatHanhSachModel.FK_PXsach_PhieuDatSach" FromRole="PXsach" ToRole="PhieuDatSach" />
         </EntityType>
         <EntityType Name="PhieuchiNXB">
           <Key>
@@ -510,6 +626,7 @@
           <Property Name="GiaBan" Type="Int64" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" Nullable="false" />
           <Property Name="GiaNhap" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="CTPhieuDat" Relationship="DBQLPhatHanhSachModel.FK_CTPhieuDat_Sach" FromRole="Sach" ToRole="CTPhieuDat" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -780,7 +897,124 @@
             <End Role="Sach" EntitySet="Sach" />
             <End Role="TTbansachDL" EntitySet="TTbansachDL" />
           </AssociationSet>
+          <EntitySet Name="CTPhieuDat" EntityType="DBQLPhatHanhSachModel.CTPhieuDat" />
+          <EntitySet Name="PhieuDatSach" EntityType="DBQLPhatHanhSachModel.PhieuDatSach" />
+          <EntitySet Name="TaiKhoanDaiLy" EntityType="DBQLPhatHanhSachModel.TaiKhoanDaiLy" />
+          <AssociationSet Name="FK_CTPhieuDat_PhieuDatSach" Association="DBQLPhatHanhSachModel.FK_CTPhieuDat_PhieuDatSach">
+            <End Role="PhieuDatSach" EntitySet="PhieuDatSach" />
+            <End Role="CTPhieuDat" EntitySet="CTPhieuDat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTPhieuDat_Sach" Association="DBQLPhatHanhSachModel.FK_CTPhieuDat_Sach">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="CTPhieuDat" EntitySet="CTPhieuDat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuDatSach_Daily" Association="DBQLPhatHanhSachModel.FK_PhieuDatSach_Daily">
+            <End Role="Daily" EntitySet="Daily" />
+            <End Role="PhieuDatSach" EntitySet="PhieuDatSach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaiKhoanDaiLy_Daily" Association="DBQLPhatHanhSachModel.FK_TaiKhoanDaiLy_Daily">
+            <End Role="Daily" EntitySet="Daily" />
+            <End Role="TaiKhoanDaiLy" EntitySet="TaiKhoanDaiLy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PXsach_PhieuDatSach" Association="DBQLPhatHanhSachModel.FK_PXsach_PhieuDatSach">
+            <End Role="PhieuDatSach" EntitySet="PhieuDatSach" />
+            <End Role="PXsach" EntitySet="PXsach" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="CTPhieuDat">
+          <Key>
+            <PropertyRef Name="MaPhieuDat" />
+            <PropertyRef Name="Masach" />
+          </Key>
+          <Property Name="MaPhieuDat" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Masach" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <Property Name="Gia" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="PhieuDatSach" Relationship="DBQLPhatHanhSachModel.FK_CTPhieuDat_PhieuDatSach" FromRole="CTPhieuDat" ToRole="PhieuDatSach" />
+          <NavigationProperty Name="Sach" Relationship="DBQLPhatHanhSachModel.FK_CTPhieuDat_Sach" FromRole="CTPhieuDat" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="PhieuDatSach">
+          <Key>
+            <PropertyRef Name="MaPhieuDat" />
+          </Key>
+          <Property Name="MaPhieuDat" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Madaily" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDat" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TongTien" Type="Int64" Nullable="false" />
+          <Property Name="TinhTrang" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CTPhieuDat" Relationship="DBQLPhatHanhSachModel.FK_CTPhieuDat_PhieuDatSach" FromRole="PhieuDatSach" ToRole="CTPhieuDat" />
+          <NavigationProperty Name="Daily" Relationship="DBQLPhatHanhSachModel.FK_PhieuDatSach_Daily" FromRole="PhieuDatSach" ToRole="Daily" />
+          <NavigationProperty Name="PXsach" Relationship="DBQLPhatHanhSachModel.FK_PXsach_PhieuDatSach" FromRole="PhieuDatSach" ToRole="PXsach" />
+        </EntityType>
+        <EntityType Name="TaiKhoanDaiLy">
+          <Key>
+            <PropertyRef Name="TaiKhoan" />
+          </Key>
+          <Property Name="TaiKhoan" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Madaily" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Daily" Relationship="DBQLPhatHanhSachModel.FK_TaiKhoanDaiLy_Daily" FromRole="TaiKhoanDaiLy" ToRole="Daily" />
+        </EntityType>
+        <Association Name="FK_CTPhieuDat_PhieuDatSach">
+          <End Type="DBQLPhatHanhSachModel.PhieuDatSach" Role="PhieuDatSach" Multiplicity="1" />
+          <End Type="DBQLPhatHanhSachModel.CTPhieuDat" Role="CTPhieuDat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhieuDatSach">
+              <PropertyRef Name="MaPhieuDat" />
+            </Principal>
+            <Dependent Role="CTPhieuDat">
+              <PropertyRef Name="MaPhieuDat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTPhieuDat_Sach">
+          <End Type="DBQLPhatHanhSachModel.Sach" Role="Sach" Multiplicity="1" />
+          <End Type="DBQLPhatHanhSachModel.CTPhieuDat" Role="CTPhieuDat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="Masach" />
+            </Principal>
+            <Dependent Role="CTPhieuDat">
+              <PropertyRef Name="Masach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuDatSach_Daily">
+          <End Type="DBQLPhatHanhSachModel.Daily" Role="Daily" Multiplicity="1" />
+          <End Type="DBQLPhatHanhSachModel.PhieuDatSach" Role="PhieuDatSach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily">
+              <PropertyRef Name="Madaily" />
+            </Principal>
+            <Dependent Role="PhieuDatSach">
+              <PropertyRef Name="Madaily" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaiKhoanDaiLy_Daily">
+          <End Type="DBQLPhatHanhSachModel.Daily" Role="Daily" Multiplicity="1" />
+          <End Type="DBQLPhatHanhSachModel.TaiKhoanDaiLy" Role="TaiKhoanDaiLy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily">
+              <PropertyRef Name="Madaily" />
+            </Principal>
+            <Dependent Role="TaiKhoanDaiLy">
+              <PropertyRef Name="Madaily" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PXsach_PhieuDatSach">
+          <End Type="DBQLPhatHanhSachModel.PhieuDatSach" Role="PhieuDatSach" Multiplicity="1" />
+          <End Type="DBQLPhatHanhSachModel.PXsach" Role="PXsach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhieuDatSach">
+              <PropertyRef Name="MaPhieuDat" />
+            </Principal>
+            <Dependent Role="PXsach">
+              <PropertyRef Name="MaPhieuDat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -855,6 +1089,7 @@
           <EntitySetMapping Name="PXsach">
             <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.PXsach">
               <MappingFragment StoreEntitySet="PXsach">
+                <ScalarProperty Name="MaPhieuDat" ColumnName="MaPhieuDat" />
                 <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="MaPX" ColumnName="MaPX" />
                 <ScalarProperty Name="Madaily" ColumnName="Madaily" />
@@ -926,6 +1161,36 @@
               <MappingFragment StoreEntitySet="TheLoai">
                 <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
                 <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTPhieuDat">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.CTPhieuDat">
+              <MappingFragment StoreEntitySet="CTPhieuDat">
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="Masach" ColumnName="Masach" />
+                <ScalarProperty Name="MaPhieuDat" ColumnName="MaPhieuDat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhieuDatSach">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.PhieuDatSach">
+              <MappingFragment StoreEntitySet="PhieuDatSach">
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+                <ScalarProperty Name="Madaily" ColumnName="Madaily" />
+                <ScalarProperty Name="MaPhieuDat" ColumnName="MaPhieuDat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoanDaiLy">
+            <EntityTypeMapping TypeName="DBQLPhatHanhSachModel.TaiKhoanDaiLy">
+              <MappingFragment StoreEntitySet="TaiKhoanDaiLy">
+                <ScalarProperty Name="Madaily" ColumnName="Madaily" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -20,6 +20,7 @@ namespace DAL
             this.CTPXsach = new HashSet<CTPXsach>();
             this.CTphieuchiNXB = new HashSet<CTphieuchiNXB>();
             this.TTbansachDL = new HashSet<TTbansachDL>();
+            this.CTPhieuDat = new HashSet<CTPhieuDat>();
         }
     
         public string Masach { get; set; }
@@ -37,5 +38,6 @@ namespace DAL
         public virtual Nhaxuatban Nhaxuatban { get; set; }
         public virtual TheLoai TheLoai { get; set; }
         public virtual ICollection<TTbansachDL> TTbansachDL { get; set; }
+        public virtual ICollection<CTPhieuDat> CTPhieuDat { get; set; }
     }
 }
